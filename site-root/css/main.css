@@ -1,0 +1,266 @@
+:root {
+  /* Tokens */
+  --bg: #050608;                 /* deep void */
+  --panel: #0b0f14;              /* card surface */
+  --grid-line: rgba(255, 255, 255, 0.03);
+  --text: #E6E9EE;               /* soft white */
+  --muted: #9AA5B1;
+  --accent: #6AD1FF;             /* primary accent */
+  --accent-2: #34D399;           /* secondary accent */
+  --glass: rgba(255, 255, 255, 0.02);
+  --radius: 12px;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-bengali: 'Hind Siliguri', 'Noto Sans Bengali', sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-bengali);
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.8; /* Adjusted per visual requirement, prompt said 0.03 opacity on grid lines, here lines are low opacity color already? Prompt said allow opacity on ::before */
+  pointer-events: none;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 100%); /* Subtle vignette */
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-bengali);
+  color: #fff;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: var(--accent-2);
+}
+
+/* Layout */
+.layout-grid {
+  display: grid;
+  grid-template-columns: 240px 1fr; /* Sidebar + Main */
+  min-height: 100vh;
+}
+
+@media (max-width: 768px) {
+  .layout-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Sidebar */
+.sidebar {
+  background: var(--panel);
+  border-right: 1px solid var(--grid-line);
+  padding: 1.5rem;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    display: none; /* Mobile menu handled separately */
+  }
+  .sidebar.active {
+    display: flex;
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+  }
+}
+
+.logo {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 2rem;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.nav-link {
+  display: block;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  color: var(--muted);
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.nav-link:hover, .nav-link.active {
+  background: var(--glass);
+  color: #fff;
+  border: 1px solid var(--grid-line);
+}
+
+/* Header (Mobile) */
+.mobile-header {
+  display: none;
+  padding: 1rem;
+  background: var(--bg);
+  border-bottom: 1px solid var(--grid-line);
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+@media (max-width: 768px) {
+  .mobile-header {
+    display: flex;
+  }
+}
+
+/* Main Content */
+.main-content {
+  padding: 2rem;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Components */
+.card {
+  background: linear-gradient(180deg, var(--glass), rgba(255, 255, 255, 0.01));
+  border: 1px solid var(--grid-line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.glass-panel {
+  background: rgba(11, 15, 20, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--grid-line);
+  border-radius: var(--radius);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.btn-primary:hover {
+  background: #8BE0FF;
+}
+
+.search-container {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.search-input {
+  width: 100%;
+  background: var(--glass);
+  border: 1px solid var(--grid-line);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  color: #fff;
+  font-family: inherit;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(106, 209, 255, 0.2);
+}
+
+/* TOC Sidebar (Right) - Desktop Only for now, or unified */
+.toc-sidebar {
+  position: sticky;
+  top: 2rem;
+  align-self: start;
+  font-size: 0.85rem;
+  border-left: 1px solid var(--grid-line);
+  padding-left: 1rem;
+  margin-left: 2rem;
+  display: none; /* Visible on large screens via media query on layout-grid if we go 3-col */
+}
+
+/* Utility */
+.text-accent { color: var(--accent); }
+.text-muted { color: var(--muted); }
+.mt-4 { margin-top: 1rem; }
+.mb-4 { margin-bottom: 1rem; }
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+
+/* Content Reset / Overrides for Extracted HTML */
+/* This is critical to make sure Tailwind-reliant content doesn't break completely if CDN fails or conflicts */
+/* We rely on Tailwind CDN for the inner content, but we enforce some overrides */
+
+main img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+main pre {
+  background: #1e1e1e !important;
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+main blockquote {
+  border-left: 3px solid var(--accent);
+  padding-left: 1rem;
+  font-style: italic;
+  color: var(--muted);
+}

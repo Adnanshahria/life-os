@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Daily Stoic | Life-OS</title>
+    <meta name="description" content="স্টোয়িক দর্শন থেকে জীবনের প্রতিদিনের জ্ঞান।">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg: #050608;
+            --panel: #0b0f14;
+            --surface: #12161c;
+            --text: #e2e8f0;
+            --muted: #94a3b8;
+            --dim: #64748b;
+            --accent: #A89CFF;
+            --gold: #C9A86A;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --border: rgba(255, 255, 255, 0.08);
+            --radius: 12px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Hind Siliguri', 'Inter', system-ui, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #10b981, #8b5cf6);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #C9A86A, #10b981);
+        }
+
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: #10b981 #050608;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 32px 32px;
+            pointer-events: none;
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 260px;
+            background: var(--panel);
+            border-right: 1px solid var(--border);
+            padding: 1.5rem 1rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+
+            .sidebar.active {
+                display: block;
+            }
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .brand-logo {
+            height: 36px;
+            width: auto;
+            border-radius: 6px;
+        }
+
+        .brand-text {
+            font-weight: 700;
+            font-size: 1.1rem;
+            background: linear-gradient(to right, #fff, #aaa);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: white;
+            display: block;
+        }
+
+        .brand-text {
+            font-weight: 700;
+            font-size: 1.1rem;
+            background: linear-gradient(to right, #fff, #aaa);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .nav-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--dim);
+            padding: 0.5rem 1rem;
+            font-weight: 600;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            color: var(--muted);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text);
+        }
+
+        .nav-link.active {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            border: 1px solid var(--border);
+        }
+
+        .nav-link i {
+            width: 20px;
+            text-align: center;
+        }
+
+        .main-content {
+            flex: 1;
+            margin-left: 260px;
+            padding: 2rem 3rem;
+            max-width: 900px;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                margin-left: 0;
+                padding: 1rem;
+            }
+        }
+
+        .mobile-header {
+            display: none;
+            position: sticky;
+            top: 0;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem;
+            z-index: 50;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-header {
+                display: flex;
+            }
+        }
+
+        .menu-btn {
+            background: none;
+            border: none;
+            color: var(--muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Hind Siliguri', sans-serif;
+            color: #fff;
+            line-height: 1.3;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin: 2.5rem 0 1rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        h3 {
+            font-size: 1.15rem;
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--muted);
+        }
+
+        strong {
+            color: var(--text);
+        }
+
+        .card {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-accent {
+            border-left: 3px solid var(--accent);
+        }
+
+        .card-gold {
+            border-left: 3px solid var(--gold);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, rgba(168, 156, 255, 0.1), rgba(201, 168, 106, 0.05));
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: rgba(168, 156, 255, 0.2);
+            color: var(--accent);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            color: var(--text);
+            font-size: 1.1rem;
+        }
+
+        ul,
+        ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            color: var(--muted);
+        }
+
+        li strong {
+            color: var(--gold);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+        }
+
+        blockquote {
+            border-left: 3px solid var(--gold);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--text);
+            background: rgba(201, 168, 106, 0.05);
+            border-radius: 0 8px 8px 0;
+        }
+
+        blockquote footer {
+            font-size: 0.85rem;
+            color: var(--gold);
+            margin-top: 0.5rem;
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        .concept-card {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+            transition: all 0.2s;
+        }
+
+        .concept-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .concept-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .concept-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .concept-desc {
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        .discipline-card {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+        }
+
+        .discipline-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .discipline-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .ritual-card {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            border-top: 4px solid var(--gold);
+        }
+
+        .ritual-card.evening {
+            border-top-color: var(--accent);
+        }
+
+        .flashcard {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            min-height: 120px;
+        }
+
+        .flashcard:hover {
+            border-color: var(--accent);
+            background: rgba(168, 156, 255, 0.05);
+        }
+
+        .flashcard h4 {
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .flashcard p {
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        .flashcard .hint {
+            color: var(--dim);
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        .diagnostic-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+        }
+
+        .diagnostic-table th,
+        .diagnostic-table td {
+            padding: 1rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        .diagnostic-table th {
+            background: rgba(168, 156, 255, 0.1);
+            color: var(--accent);
+        }
+
+        .diagnostic-table td {
+            color: var(--muted);
+        }
+
+        .philosophy-box {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            padding: 1.5rem;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            margin-bottom: 1rem;
+        }
+
+        .philosophy-left {
+            flex-shrink: 0;
+            text-align: center;
+            padding-right: 1.5rem;
+            border-right: 1px solid var(--border);
+        }
+
+        .philosophy-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--gold);
+        }
+
+        .philosophy-sub {
+            font-size: 0.75rem;
+            color: var(--dim);
+            margin-top: 0.25rem;
+        }
+
+        .verdict {
+            background: linear-gradient(135deg, var(--panel), var(--surface));
+            border: 1px solid var(--gold);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .verdict h2 {
+            border: none;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+
+        .verdict ul {
+            list-style: none;
+            margin-left: 0;
+            text-align: left;
+        }
+
+        .verdict li {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .verdict li span:first-child {
+            color: var(--gold);
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 0 2rem;
+            color: var(--dim);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container">
+        <header class="mobile-header">
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <img src="../assets/logo-icon.png" alt="Life-OS" class="brand-logo">
+                <span class="brand-text">Life-OS</span>
+            </div>
+            <button class="menu-btn" onclick="document.querySelector('.sidebar').classList.toggle('active')">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </header>
+
+        <aside class="sidebar">
+            <div class="brand">
+                <img src="../assets/logo-icon.png" alt="Life-OS" class="brand-logo">
+                <span class="brand-text">Life-OS</span>
+            </div>
+
+            <nav>
+                <div class="nav-section">
+                    <div class="nav-label">মূল</div>
+                    <a href="../index.html" class="nav-link"><i class="fa-solid fa-layer-group"></i> সিনথেসিস</a>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-label">বইসমূহ</div>
+                    <a href="atomic-habits.html" class="nav-link"><i class="fa-solid fa-atom"></i> Atomic Habits</a>
+                    <a href="deep-work.html" class="nav-link"><i class="fa-solid fa-brain"></i> Deep Work</a>
+                    <a href="daily-stoic.html" class="nav-link active"><i class="fa-solid fa-monument"></i> The Daily
+                        Stoic</a>
+                    <a href="dopamine-detox.html" class="nav-link"><i class="fa-solid fa-bolt"></i> Dopamine Detox</a>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-label">গাইড</div>
+                    <a href="../guides/unified-study-guide.html" class="nav-link"><i
+                            class="fa-solid fa-book-journal-whills"></i> মাস্টার গাইড</a>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-label">প্রোটোকল</div>
+                    <a href="../protocols/life-protocol.html" class="nav-link"><i class="fa-solid fa-compass"></i> লাইফ
+                        প্রোটোকল</a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <section class="hero">
+                <span class="hero-tag">দর্শন ও স্থিতিস্থাপকতা</span>
+                <h1>The Daily Stoic</h1>
+                <p>৩৬৬টি মেডিটেশন: জ্ঞান (Wisdom), অধ্যবসায় (Perseverance), এবং জীবনযাপনের শিল্পের ওপর। আধুনিক জীবনের
+                    জটিলতা মোকাবেলায় প্রাচীন স্টোয়িক দর্শন।</p>
+                <p style="color: var(--muted); font-size: 0.9rem; margin-top: 1rem;">
+                    <i class="fa-solid fa-user"></i> Ryan Holiday &nbsp;&nbsp;
+                    <i class="fa-solid fa-book"></i> প্রতিদিনের পাঠ
+                </p>
+            </section>
+
+            <!-- Core Concepts -->
+            <h2>১. মূল ধারণাসমূহ (Core Concepts)</h2>
+
+            <div class="grid-3" style="margin-bottom: 2rem;">
+                <div class="concept-card">
+                    <div class="concept-icon">⚖️</div>
+                    <div class="concept-title">Dichotomy of Control</div>
+                    <div class="concept-desc">যা আমাদের নিয়ন্ত্রণে আছে (মন, কাজ) এবং যা নেই (অন্যের কাজ, ভাগ্য) তার
+                        পার্থক্য করা।</div>
+                </div>
+                <div class="concept-card">
+                    <div class="concept-icon">🔥</div>
+                    <div class="concept-title">Amor Fati</div>
+                    <div class="concept-desc">"ভাগ্যকে ভালোবাসা"। যা ঘটেছে তা মেনে নয়, বরং পছন্দ করা এবং নিজের ভালোর
+                        জন্য ব্যবহার করা।</div>
+                </div>
+                <div class="concept-card">
+                    <div class="concept-icon">💀</div>
+                    <div class="concept-title">Memento Mori</div>
+                    <div class="concept-desc">"মৃত্যুকে স্মরণ কর"। জীবনের প্রতিটি মুহূর্তের গুরুত্ব বোঝা এবং সময় নষ্ট
+                        না করা।</div>
+                </div>
+            </div>
+
+            <!-- Discipline of Perception -->
+            <h2>পর্ব ১: উপলব্ধির অনুশাসন (The Discipline of Perception)</h2>
+            <p style="color: var(--dim);">আমরা পৃথিবীকে কীভাবে দেখি এবং ঘটনাগুলোর প্রতি আমাদের তাৎক্ষণিক প্রতিক্রিয়া কী
+                হয়।</p>
+
+            <div class="grid-2" style="margin-top: 1.5rem;">
+                <div class="card card-accent">
+                    <h3 style="color: var(--gold);">তাত্ত্বিক ব্যাখ্যা</h3>
+                    <p>এটি মূলত আমাদের মনের বিচার ক্ষমতা বা জাজমেন্টের সাথে সম্পর্কিত। স্টোয়িকরা শেখান যে, ঘটনা
+                        নিরপেক্ষ (Objective), কিন্তু আমাদের মতামত (Subjective) ভালো বা খারাপ তৈরি করে।</p>
+                    <blockquote>
+                        "বস্তু বা ঘটনা মানুষকে বিচলিত করে না, বিচলিত করে সেই ঘটনা সম্পর্কে তাদের মতামত।"
+                        <footer>— এপিকটেটাস</footer>
+                    </blockquote>
+                </div>
+
+                <div class="card">
+                    <h3 style="color: var(--gold);">পারসেপশন ফিল্টারিং</h3>
+                    <p>মনের মধ্যে প্রবেশ করা প্রতিটি তথ্য বা ইম্প্রেশনকে যাচাই করা। কোনো ঘটনা ঘটার সাথে সাথে
+                        প্রতিক্রিয়া না দেখিয়ে সেটিকে লজিকের ফিল্টার দিয়ে পাস করানো।</p>
+                    <p style="color: var(--accent);"><strong>টুল:</strong> নিজেকে বলা—"তুমি কেবল একটি ধারণা মাত্র, সত্য
+                        ঘটনা নও।" (Stop, Look, Assess)।</p>
+                </div>
+            </div>
+
+            <!-- Discipline of Action -->
+            <h2>পর্ব ২: কর্মের অনুশাসন (The Discipline of Action)</h2>
+            <p style="color: var(--dim);">আমাদের সিদ্ধান্ত এবং আচরণের বিশুদ্ধতা।</p>
+
+            <div class="grid-3" style="margin-top: 1.5rem;">
+                <div class="card">
+                    <h3 style="color: var(--gold);">সঠিক উদ্দেশ্য</h3>
+                    <p style="font-size: 0.9rem;">প্রতিটি কাজের পেছনে একটি সঠিক উদ্দেশ্য (Purpose) থাকতে হবে। এটি আবেগের
+                        বশবর্তী হয়ে নয়, বরং যুক্তি (Logos) এবং কর্তব্যের (Duty) দ্বারা পরিচালিত হতে হবে।</p>
+                </div>
+                <div class="card">
+                    <h3 style="color: var(--gold);">জাস্টিস ফিল্টার</h3>
+                    <p style="font-size: 0.9rem;">আমার এই কাজটি কি অন্য কারো ক্ষতি করছে? এটি কি সমাজের মঙ্গলের জন্য?
+                        শুধুমাত্র সঠিক কাজটি করো। বাকিটা অপ্রাসঙ্গিক।</p>
+                </div>
+                <div class="card">
+                    <h3 style="color: var(--gold);">প্রসেস ফোকাস</h3>
+                    <p style="font-size: 0.9rem;">ফলাফলের দিকে না তাকিয়ে কাজের প্রক্রিয়ার (Process) ওপর পূর্ণ মনোযোগ
+                        দেওয়া। আর্চার যেমন তীর ছোড়ার পর তার নিয়ন্ত্রণ হারায়, তেমনি ফলাফল আমাদের হাতে থাকে না।</p>
+                </div>
+            </div>
+
+            <!-- Discipline of Will -->
+            <h2>পর্ব ৩: ইচ্ছাশক্তির অনুশাসন (The Discipline of Will)</h2>
+            <p style="color: var(--dim);">যা পরিবর্তনযোগ্য নয়, তা মেনে নেওয়া এবং সহ্য করার ক্ষমতা।</p>
+
+            <div class="philosophy-box">
+                <div class="philosophy-left">
+                    <div class="philosophy-title">Amor Fati</div>
+                    <div class="philosophy-sub">ভাগ্যকে ভালোবাসা</div>
+                </div>
+                <div>
+                    <p style="margin: 0;">এটি আমাদের নিয়ন্ত্রণের বাইরের বিষয়গুলোকে মেনে নেওয়া। যা ঘটছে তা মেনে
+                        নেওয়াই শুধু নয়, তাকে ভালোবাসা। আগুন যেমন সব কিছুকে জ্বালানিতে পরিণত করে, স্টোয়িকরা বাধাকে
+                        শক্তিতে পরিণত করে।</p>
+                </div>
+            </div>
+
+            <div class="philosophy-box">
+                <div class="philosophy-left">
+                    <div class="philosophy-title" style="color: var(--accent);">Memento Mori</div>
+                    <div class="philosophy-sub">মৃত্যুর স্মরণ</div>
+                </div>
+                <div>
+                    <p style="margin: 0;">নিজেকে প্রতিনিয়ত মনে করিয়ে দেওয়া যে জীবন নশ্বর এবং সময় সীমিত। এটি ভয়ের
+                        জন্য নয়, বরং বর্তমান মুহূর্তের গুরুত্ব বাড়ানোর জন্য এবং অপ্রয়োজনীয় কাজ থেকে বিরত থাকার জন্য
+                        ব্যবহৃত হয়।</p>
+                </div>
+            </div>
+
+            <!-- Daily Rituals -->
+            <h2>ডেইলি মেন্টাল রিচুয়ালস</h2>
+
+            <div class="grid-2">
+                <div class="ritual-card">
+                    <h3>☀️ সকাল (Morning Preparation)</h3>
+                    <ul>
+                        <li><strong>Premeditatio Malorum:</strong> আজকের দিনের সম্ভাব্য চ্যালেঞ্জগুলো কী?</li>
+                        <li>আজ আমি কোন গুণাবলী (Virtues) চর্চা করব?</li>
+                        <li>আজ আমি অকৃতজ্ঞ, অহংকারী বা স্বার্থপর মানুষের দেখা পেতে পারি—এতে রাগ করব না।</li>
+                        <li><em style="color: var(--dim);">"আজ আমি আমার কাজ করব, ফলাফল নিয়ে ভাবব না।"</em></li>
+                    </ul>
+                </div>
+
+                <div class="ritual-card evening">
+                    <h3>🌙 রাত (Evening Review)</h3>
+                    <ul>
+                        <li>আজ আমি কী ভালো করেছি?</li>
+                        <li>কোথায় আমার বিচ্যুতি হয়েছে বা আমি আবেগের দাস হয়েছি?</li>
+                        <li>আগামীকাল কীভাবে আরও ভালো করা যায়?</li>
+                        <li><em style="color: var(--dim);">আত্ম-পর্যালোচনা: দিনের শেষে নিজের কঠোর বিচারক হওয়া।</em>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Flashcards -->
+            <h2>স্টোইক ডায়াগনস্টিকস & ফ্ল্যাশকার্ডস</h2>
+            <p style="color: var(--dim);">কার্ডগুলোতে ক্লিক করুন বিস্তারিত দেখার জন্য।</p>
+
+            <div class="grid-3" style="margin-top: 1rem;">
+                <div class="flashcard" onclick="this.classList.toggle('flipped')">
+                    <h4>নিয়ন্ত্রণের দ্বিবিভাজন</h4>
+                    <p class="hint">(Dichotomy of Control)</p>
+                    <p style="margin-top: 0.75rem;">কিছু জিনিস আমাদের নিয়ন্ত্রণে (চিন্তা, কর্ম), কিছু নয় (ভাগ্য,
+                        অন্যের মতামত)। যা নিয়ন্ত্রণে নেই, তা নিয়ে উদ্বেগ ত্যাগ করুন।</p>
+                </div>
+
+                <div class="flashcard" onclick="this.classList.toggle('flipped')">
+                    <h4>স্টোইক অ্যালাইনমেন্ট</h4>
+                    <p class="hint">(প্রতিক্রিয়া নির্দেশক)</p>
+                    <p style="margin-top: 0.75rem;">ঘটনা ঘটার পর শান্ত থাকা এবং যুক্তিবাদী হওয়া। তাৎক্ষণিক রাগ বা ভয়
+                        না দেখানো।</p>
+                </div>
+
+                <div class="flashcard" onclick="this.classList.toggle('flipped')">
+                    <h4>ভিউ ফ্রম এবাভ</h4>
+                    <p class="hint">(View from Above)</p>
+                    <p style="margin-top: 0.75rem;">নিজের সমস্যাগুলোকে মহাবিশ্বের বিশালতার সাপেক্ষে দেখা, যাতে সেগুলোকে
+                        তুচ্ছ মনে হয় এবং মানসিক শান্তি ফিরে আসে।</p>
+                </div>
+            </div>
+
+            <!-- Diagnostic Table -->
+            <h2>ডায়াগনস্টিক টেবিল</h2>
+
+            <table class="diagnostic-table">
+                <thead>
+                    <tr>
+                        <th>নির্দেশক (Indicator)</th>
+                        <th>স্টোইক অ্যালাইনমেন্ট ✅</th>
+                        <th>বিচ্যুতি বা ইগো ❌</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>বিচার (Judgment)</strong></td>
+                        <td>ঘটনাকে নিরপেক্ষভাবে দেখা ("এটি ঘটেছে")</td>
+                        <td>ঘটনাকে ব্যক্তিগতভাবে নেওয়া ("কেন আমার সাথে?")</td>
+                    </tr>
+                    <tr>
+                        <td><strong>বিপত্তি (Adversity)</strong></td>
+                        <td>বাধাকে সুযোগ হিসেবে দেখা (The Obstacle is the Way)</td>
+                        <td>বাধাকে দুর্ভাগ্য বা অবিচার হিসেবে দেখা</td>
+                    </tr>
+                    <tr>
+                        <td><strong>আবেগ (Emotion)</strong></td>
+                        <td>আবেগের ওপর সার্বভৌমত্ব বজায় রাখা</td>
+                        <td>আবেগের দাসত্ব করা বা চালিত হওয়া</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Verdict -->
+            <section class="verdict">
+                <h2>🔎 চূড়ান্ত রায় (Verdict)</h2>
+                <ul>
+                    <li><span>❖</span><span><strong>মূল ধারণা:</strong> যা আমাদের নিয়ন্ত্রণে তা নিয়ে কাজ করা, বাকিটা
+                            মেনে নেওয়া।</span></li>
+                    <li><span>❖</span><span><strong>প্র্যাকটিস:</strong> প্রতিদিন সকালে এক পাতা পড়া এবং সারাদিন সেই
+                            চিন্তা লালন করা।</span></li>
+                    <li><span>❖</span><span><strong>ফলাফল:</strong> মানসিক স্থিতিস্থাপকতা, শান্তি এবং জ্ঞান
+                            বৃদ্ধি।</span></li>
+                    <li><span>❖</span><span><strong>মূলমন্ত্র:</strong> "Ta eph' hēmin, ta ouk eph' hēmin." — যা আমাদের
+                            হাতে, যা আমাদের হাতে নয়।</span></li>
+                </ul>
+            </section>
+
+            <footer>
+                <p>THE DAILY STOIC OPERATING SYSTEM</p>
+                <p style="margin-top: 0.5rem; font-size: 0.75rem;">
+                    <span>Amor Fati</span> •
+                    <span>Memento Mori</span>
+                </p>
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        document.querySelector('.menu-btn')?.addEventListener('click', () => {
+            document.querySelector('.sidebar').classList.toggle('active');
+        });
+    </script>
+</body>
+
+</html>

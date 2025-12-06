@@ -1,0 +1,42 @@
+[
+    {
+        "title": "সিনথেসিস",
+        "url": "/index.html",
+        "content": "জ্ঞান সংশ্লেষণ প্ল্যাটফর্ম - আপনার দ্বিতীয় মস্তিষ্ক"
+    },
+    {
+        "title": "Atomic Habits",
+        "url": "/books/atomic-habits.html",
+        "content": "ক্ষুদ্র পরিবর্তন, অসাধারণ ফলাফল। পরিচয়-ভিত্তিক অভ্যাস গঠন।"
+    },
+    {
+        "title": "Deep Work",
+        "url": "/books/deep-work.html",
+        "content": "বিক্ষেপমুক্ত মনোযোগের মাধ্যমে কঠিন কাজ আয়ত্ত করুন।"
+    },
+    {
+        "title": "The Daily Stoic",
+        "url": "/books/daily-stoic.html",
+        "content": "স্টোয়িক দর্শন। জ্ঞান, অধ্যবসায় এবং জীবনযাপনের শিল্প।"
+    },
+    {
+        "title": "Dopamine Detox",
+        "url": "/books/dopamine-detox.html",
+        "content": "ডোপামিন রিসেট এবং মনোযোগ ফিরিয়ে আনার কৌশল।"
+    },
+    {
+        "title": "স্টাডি গাইড ১",
+        "url": "/guides/study-guide-1.html",
+        "content": "গভীর মনোযোগ প্রোটোকল। বৈজ্ঞানিক এবং আধ্যাত্মিক পদ্ধতি।"
+    },
+    {
+        "title": "স্টাডি গাইড ২",
+        "url": "/guides/study-guide-2.html",
+        "content": "স্টোয়িক লাইফস্টাইল প্রোটোকল। শৃঙ্খলা এবং আত্ম-মূল্যায়ন।"
+    },
+    {
+        "title": "লাইফ প্রোটোকল",
+        "url": "/protocols/life-protocol.html",
+        "content": "ইউনিফাইড নলেজ সিনথেসিস। Monk-Warrior-Scholar অ্যালগরিদম।"
+    }
+]

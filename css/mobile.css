@@ -269,8 +269,8 @@
         display: block;
     }
 
-    /* Redesigned Mobile Header (now Main Header) */
-    .main-header {
+    /* Redesigned Mobile Header */
+    .mobile-header {
         display: flex !important;
         background: rgba(5, 6, 8, 0.98);
         backdrop-filter: blur(20px);
@@ -280,11 +280,11 @@
         justify-content: center;
     }
 
-    .main-header .brand-logo {
+    .mobile-header .brand-logo {
         height: 28px;
     }
 
-    .main-header .brand-text {
+    .mobile-header .brand-text {
         font-size: 0.95rem;
     }
 

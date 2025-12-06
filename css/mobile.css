@@ -247,6 +247,21 @@
     /* Hide desktop sidebar completely on mobile */
     .sidebar {
         display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        position: absolute !important;
+        left: -9999px !important;
+    }
+
+    /* Ensure all sidebar children are hidden too */
+    .sidebar *,
+    .sidebar .brand,
+    .sidebar .brand-logo,
+    .sidebar .brand-text,
+    .sidebar nav {
+        display: none !important;
+        visibility: hidden !important;
     }
 
     /* Show bottom navigation */

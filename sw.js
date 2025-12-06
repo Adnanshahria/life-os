@@ -8,30 +8,30 @@ const STATIC_CACHE = 'life-os-static-v2';
 
 // Assets to cache immediately on install
 const PRECACHE_ASSETS = [
-    '/',
-    '/index.html',
-    '/css/main.css',
-    '/css/mobile.css',
-    '/js/site.js',
-    '/js/mobile-interactions.js',
-    '/js/navigation.js',
-    '/assets/logo-icon.png',
-    '/assets/icon-192.png',
-    '/assets/icon-512.png',
-    '/manifest.webmanifest'
+    './',
+    './index.html',
+    './css/main.css',
+    './css/mobile.css',
+    './js/site.js',
+    './js/mobile-interactions.js',
+    './js/navigation.js',
+    './assets/logo-icon.png',
+    './assets/icon-192.png',
+    './assets/icon-512.png',
+    './manifest.webmanifest'
 ];
 
 // Pages to cache for offline access
 const PAGES_TO_CACHE = [
-    '/index.html',
-    '/books/atomic-habits.html',
-    '/books/deep-work.html',
-    '/books/daily-stoic.html',
-    '/books/dopamine-detox.html',
-    '/guides/unified-study-guide.html',
-    '/guides/study-guide-1.html',
-    '/guides/study-guide-2.html',
-    '/protocols/life-protocol.html'
+    './index.html',
+    './books/atomic-habits.html',
+    './books/deep-work.html',
+    './books/daily-stoic.html',
+    './books/dopamine-detox.html',
+    './guides/unified-study-guide.html',
+    './guides/study-guide-1.html',
+    './guides/study-guide-2.html',
+    './protocols/life-protocol.html'
 ];
 
 // Install event - precache essential assets
@@ -95,7 +95,7 @@ self.addEventListener('fetch', (event) => {
                 .catch(() => {
                     // Fallback to cache
                     return caches.match(request).then((cachedResponse) => {
-                        return cachedResponse || caches.match('/index.html');
+                        return cachedResponse || caches.match('./index.html');
                     });
                 })
         );

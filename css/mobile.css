@@ -277,7 +277,9 @@
         -webkit-backdrop-filter: blur(20px);
         padding: 0.85rem 1rem;
         border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        justify-content: center;
+        justify-content: space-between !important;
+        align-items: center !important;
+        flex-direction: row !important;
     }
 
     .mobile-header .brand-logo {

@@ -3,8 +3,8 @@
  * Provides offline caching and fast navigation
  */
 
-const CACHE_NAME = 'life-os-v2';
-const STATIC_CACHE = 'life-os-static-v2';
+const CACHE_NAME = 'life-os-v3';
+const STATIC_CACHE = 'life-os-static-v3';
 
 // Assets to cache immediately on install
 const PRECACHE_ASSETS = [

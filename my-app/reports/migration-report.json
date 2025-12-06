@@ -1,0 +1,77 @@
+{
+  "generated_at": "2025-12-07 00:08:06.670219",
+  "pages": [
+    {
+      "page": "books/atomic-habits.html",
+      "mdx_exists": true,
+      "checks": {
+        "headings_preserved": "MANUAL_CHECK_REQUIRED",
+        "images_load": "MANUAL_CHECK_REQUIRED"
+      },
+      "status": "PASS"
+    },
+    {
+      "page": "books/daily-stoic.html",
+      "mdx_exists": true,
+      "checks": {
+        "headings_preserved": "MANUAL_CHECK_REQUIRED",
+        "images_load": "MANUAL_CHECK_REQUIRED"
+      },
+      "status": "PASS"
+    },
+    {
+      "page": "books/deep-work.html",
+      "mdx_exists": true,
+      "checks": {
+        "headings_preserved": "MANUAL_CHECK_REQUIRED",
+        "images_load": "MANUAL_CHECK_REQUIRED"
+      },
+      "status": "PASS"
+    },
+    {
+      "page": "books/dopamine-detox.html",
+      "mdx_exists": true,
+      "checks": {
+        "headings_preserved": "MANUAL_CHECK_REQUIRED",
+        "images_load": "MANUAL_CHECK_REQUIRED"
+      },
+      "status": "PASS"
+    },
+    {
+      "page": "guides/study-guide-1.html",
+      "mdx_exists": true,
+      "checks": {
+        "headings_preserved": "MANUAL_CHECK_REQUIRED",
+        "images_load": "MANUAL_CHECK_REQUIRED"
+      },
+      "status": "PASS"
+    },
+    {
+      "page": "guides/study-guide-2.html",
+      "mdx_exists": true,
+      "checks": {
+        "headings_preserved": "MANUAL_CHECK_REQUIRED",
+        "images_load": "MANUAL_CHECK_REQUIRED"
+      },
+      "status": "PASS"
+    },
+    {
+      "page": "guides/unified-study-guide.html",
+      "mdx_exists": true,
+      "checks": {
+        "headings_preserved": "MANUAL_CHECK_REQUIRED",
+        "images_load": "MANUAL_CHECK_REQUIRED"
+      },
+      "status": "PASS"
+    },
+    {
+      "page": "protocols/life-protocol.html",
+      "mdx_exists": true,
+      "checks": {
+        "headings_preserved": "MANUAL_CHECK_REQUIRED",
+        "images_load": "MANUAL_CHECK_REQUIRED"
+      },
+      "status": "PASS"
+    }
+  ]
+}

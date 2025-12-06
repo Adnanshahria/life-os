@@ -1,0 +1,255 @@
+[
+  {
+    "originalPath": "books/atomic-habits.html",
+    "archivedPath": "_archive/original_site/books/atomic-habits.html",
+    "assets": [
+      "../assets/logo-icon.png",
+      "../assets/logo-icon.png",
+      "../js/mobile-interactions.js",
+      "../js/navigation.js"
+    ],
+    "internalLinks": [
+      "../manifest.webmanifest",
+      "../assets/icon-192.png",
+      "https://fonts.googleapis.com",
+      "https://fonts.gstatic.com",
+      "https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap",
+      "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+      "../css/mobile.css",
+      "../index.html",
+      "atomic-habits.html",
+      "deep-work.html",
+      "daily-stoic.html",
+      "dopamine-detox.html",
+      "../guides/unified-study-guide.html",
+      "../protocols/life-protocol.html",
+      "../index.html",
+      "../index.html#books",
+      "../guides/unified-study-guide.html",
+      "../protocols/life-protocol.html"
+    ]
+  },
+  {
+    "originalPath": "books/daily-stoic.html",
+    "archivedPath": "_archive/original_site/books/daily-stoic.html",
+    "assets": [
+      "../assets/logo-icon.png",
+      "../assets/logo-icon.png",
+      "../js/mobile-interactions.js",
+      "../js/navigation.js"
+    ],
+    "internalLinks": [
+      "../manifest.webmanifest",
+      "../assets/icon-192.png",
+      "https://fonts.googleapis.com",
+      "https://fonts.gstatic.com",
+      "https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap",
+      "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+      "../css/mobile.css",
+      "../index.html",
+      "atomic-habits.html",
+      "deep-work.html",
+      "daily-stoic.html",
+      "dopamine-detox.html",
+      "../guides/unified-study-guide.html",
+      "../protocols/life-protocol.html",
+      "../index.html",
+      "../index.html#books",
+      "../guides/unified-study-guide.html",
+      "../protocols/life-protocol.html"
+    ]
+  },
+  {
+    "originalPath": "books/deep-work.html",
+    "archivedPath": "_archive/original_site/books/deep-work.html",
+    "assets": [
+      "https://cdn.jsdelivr.net/npm/chart.js",
+      "../assets/logo-icon.png",
+      "../assets/logo-icon.png",
+      "../js/mobile-interactions.js",
+      "../js/navigation.js"
+    ],
+    "internalLinks": [
+      "../manifest.webmanifest",
+      "../assets/icon-192.png",
+      "https://fonts.googleapis.com",
+      "https://fonts.gstatic.com",
+      "https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap",
+      "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+      "../css/mobile.css",
+      "../index.html",
+      "atomic-habits.html",
+      "deep-work.html",
+      "daily-stoic.html",
+      "dopamine-detox.html",
+      "../guides/unified-study-guide.html",
+      "../protocols/life-protocol.html",
+      "../index.html",
+      "deep-work.html",
+      "../guides/unified-study-guide.html",
+      "../protocols/life-protocol.html",
+      "../index.html",
+      "../index.html#books",
+      "../guides/unified-study-guide.html",
+      "../protocols/life-protocol.html"
+    ]
+  },
+  {
+    "originalPath": "books/dopamine-detox.html",
+    "archivedPath": "_archive/original_site/books/dopamine-detox.html",
+    "assets": [
+      "https://cdn.jsdelivr.net/npm/chart.js",
+      "../assets/logo-icon.png",
+      "../assets/logo-icon.png",
+      "../js/mobile-interactions.js",
+      "../js/navigation.js"
+    ],
+    "internalLinks": [
+      "../manifest.webmanifest",
+      "../assets/icon-192.png",
+      "https://fonts.googleapis.com",
+      "https://fonts.gstatic.com",
+      "https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap",
+      "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+      "../css/mobile.css",
+      "../index.html",
+      "atomic-habits.html",
+      "deep-work.html",
+      "daily-stoic.html",
+      "dopamine-detox.html",
+      "../guides/unified-study-guide.html",
+      "../protocols/life-protocol.html",
+      "../index.html",
+      "../index.html#books",
+      "../guides/unified-study-guide.html",
+      "../protocols/life-protocol.html"
+    ]
+  },
+  {
+    "originalPath": "guides/study-guide-1.html",
+    "archivedPath": "_archive/original_site/guides/study-guide-1.html",
+    "assets": [
+      "https://cdn.jsdelivr.net/npm/chart.js",
+      "../assets/logo-icon.png",
+      "../assets/logo.png",
+      "../js/mobile-interactions.js",
+      "../js/navigation.js"
+    ],
+    "internalLinks": [
+      "../manifest.webmanifest",
+      "../assets/icon-192.png",
+      "https://fonts.googleapis.com",
+      "https://fonts.gstatic.com",
+      "https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap",
+      "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+      "../css/mobile.css",
+      "../index.html",
+      "../books/atomic-habits.html",
+      "../books/deep-work.html",
+      "../books/daily-stoic.html",
+      "../books/dopamine-detox.html",
+      "unified-study-guide.html",
+      "study-guide-1.html",
+      "study-guide-2.html",
+      "../protocols/life-protocol.html",
+      "../index.html",
+      "../books/atomic-habits.html",
+      "unified-study-guide.html",
+      "../protocols/life-protocol.html"
+    ]
+  },
+  {
+    "originalPath": "guides/study-guide-2.html",
+    "archivedPath": "_archive/original_site/guides/study-guide-2.html",
+    "assets": [
+      "https://cdn.jsdelivr.net/npm/chart.js",
+      "../assets/logo-icon.png",
+      "../assets/logo.png",
+      "../js/mobile-interactions.js",
+      "../js/navigation.js"
+    ],
+    "internalLinks": [
+      "../manifest.webmanifest",
+      "../assets/icon-192.png",
+      "https://fonts.googleapis.com",
+      "https://fonts.gstatic.com",
+      "https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap",
+      "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+      "../css/mobile.css",
+      "../index.html",
+      "../books/atomic-habits.html",
+      "../books/deep-work.html",
+      "../books/daily-stoic.html",
+      "../books/dopamine-detox.html",
+      "unified-study-guide.html",
+      "study-guide-1.html",
+      "study-guide-2.html",
+      "../protocols/life-protocol.html",
+      "../index.html",
+      "../books/atomic-habits.html",
+      "unified-study-guide.html",
+      "../protocols/life-protocol.html"
+    ]
+  },
+  {
+    "originalPath": "guides/unified-study-guide.html",
+    "archivedPath": "_archive/original_site/guides/unified-study-guide.html",
+    "assets": [
+      "https://cdn.jsdelivr.net/npm/chart.js",
+      "../assets/logo-icon.png",
+      "../assets/logo-icon.png",
+      "../js/mobile-interactions.js",
+      "../js/navigation.js"
+    ],
+    "internalLinks": [
+      "../manifest.webmanifest",
+      "../assets/icon-192.png",
+      "https://fonts.googleapis.com",
+      "https://fonts.gstatic.com",
+      "https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap",
+      "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+      "../css/mobile.css",
+      "../index.html",
+      "../books/atomic-habits.html",
+      "../books/deep-work.html",
+      "../books/daily-stoic.html",
+      "../books/dopamine-detox.html",
+      "unified-study-guide.html",
+      "../protocols/life-protocol.html",
+      "../index.html",
+      "../books/atomic-habits.html",
+      "unified-study-guide.html",
+      "../protocols/life-protocol.html"
+    ]
+  },
+  {
+    "originalPath": "protocols/life-protocol.html",
+    "archivedPath": "_archive/original_site/protocols/life-protocol.html",
+    "assets": [
+      "../assets/logo-icon.png",
+      "../assets/logo-icon.png",
+      "../js/mobile-interactions.js",
+      "../js/navigation.js"
+    ],
+    "internalLinks": [
+      "../manifest.webmanifest",
+      "../assets/icon-192.png",
+      "https://fonts.googleapis.com",
+      "https://fonts.gstatic.com",
+      "https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap",
+      "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+      "../css/mobile.css",
+      "../index.html",
+      "../books/atomic-habits.html",
+      "../books/deep-work.html",
+      "../books/daily-stoic.html",
+      "../books/dopamine-detox.html",
+      "../guides/unified-study-guide.html",
+      "../protocols/life-protocol.html",
+      "../index.html",
+      "../books/atomic-habits.html",
+      "../guides/unified-study-guide.html",
+      "life-protocol.html"
+    ]
+  }
+]

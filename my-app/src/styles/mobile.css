@@ -1,0 +1,180 @@
+/* ============================================
+   LIFE-OS MOBILE COMPLETE REDESIGN
+   ============================================ */
+
+/* Bottom Navigation */
+.bottom-nav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(11, 15, 20, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 0.5rem 0;
+    padding-bottom: calc(0.5rem + env(safe-area-inset-bottom, 0px));
+    z-index: 1000;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.bottom-nav-items {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.bottom-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    text-decoration: none;
+    color: #64748b;
+    font-size: var(--fs-small, 0.6rem);
+    padding: 0.5rem 0.75rem;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+    min-width: 60px;
+    min-height: 44px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.bottom-nav-item i {
+    font-size: 1.2rem;
+    transition: transform 0.2s ease;
+}
+
+.bottom-nav-item.active {
+    color: #3b82f6;
+}
+
+.bottom-nav-item.active i {
+    transform: scale(1.15);
+}
+
+.bottom-nav-item:active {
+    transform: scale(0.92);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.bottom-nav-item:focus-visible {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+/* Cards */
+.card--hero {
+    width: 100%;
+    padding: var(--space-lg, 1.5rem);
+    border-radius: 12px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5));
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+.card--content {
+    padding: var(--space-md, 1rem);
+    margin-bottom: var(--space-md, 1rem);
+    border-radius: 12px;
+}
+
+.card--list {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md, 1rem);
+    padding: var(--space-md, 1rem);
+    min-height: 44px;
+}
+
+.card--list .card__thumb {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.card--list .card__body {
+    flex: 1;
+    min-width: 0;
+}
+
+.card--list .card__title {
+    font-size: var(--fs-body, 0.9rem);
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card--list .card__meta {
+    font-size: var(--fs-meta, 0.75rem);
+    opacity: 0.8;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .sidebar {
+        display: none !important;
+    }
+
+    .bottom-nav {
+        display: block;
+    }
+
+    .mobile-header {
+        display: flex !important;
+        background: rgba(5, 6, 8, 0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        padding: 0.85rem 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        justify-content: space-between !important;
+        align-items: center !important;
+        flex-direction: row !important;
+    }
+
+    .mobile-header .brand-logo {
+        height: 28px;
+    }
+
+    .mobile-header .brand-text {
+        font-size: 0.95rem;
+    }
+
+    .menu-btn {
+        display: none !important;
+        /* Managed by Header component if needed, or hidden */
+    }
+
+    .main-content {
+        margin-left: 0 !important;
+        padding: 0.75rem 0.75rem 5rem 0.75rem !important;
+        max-width: 100% !important;
+        overflow-x: hidden;
+    }
+
+    .hero h1 {
+        font-size: 1.35rem !important;
+    }
+
+    .hero p {
+        font-size: 0.85rem !important;
+    }
+
+    .card {
+        padding: 0.85rem !important;
+        margin-bottom: 0.85rem !important;
+    }
+
+    .grid-2,
+    .cards-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0.65rem !important;
+    }
+}

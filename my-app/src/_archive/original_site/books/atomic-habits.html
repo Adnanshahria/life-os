@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atomic Habits | Life-OS</title>
+    <meta name="description" content="Atomic Habits বই থেকে জীবন পরিবর্তনের দর্শন ও কৌশল।">
+
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#050608">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Life-OS">
+    <link rel="manifest" href="../manifest.webmanifest">
+    <link rel="apple-touch-icon" href="../assets/icon-192.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/mobile.css">
+
+    <style>
+        :root {
+            --bg: #050608;
+            --panel: #0b0f14;
+            --surface: #12161c;
+            --text: #e2e8f0;
+            --muted: #94a3b8;
+            --dim: #64748b;
+            --accent: #8BA1FF;
+            --accent2: #a78bfa;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --border: rgba(255, 255, 255, 0.08);
+            --radius: 12px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Hind Siliguri', 'Inter', system-ui, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #10b981, #8b5cf6);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #C9A86A, #10b981);
+        }
+
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: #10b981 #050608;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 32px 32px;
+            pointer-events: none;
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 260px;
+            background: var(--panel);
+            border-right: 1px solid var(--border);
+            padding: 1.5rem 1rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+
+            .sidebar.active {
+                display: block;
+            }
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .brand-logo {
+            height: 36px;
+            width: auto;
+            border-radius: 6px;
+        }
+
+        .brand-text {
+            font-weight: 700;
+            font-size: 1.1rem;
+            background: linear-gradient(to right, #fff, #aaa);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: white;
+            display: block;
+        }
+
+        .brand-text {
+            font-weight: 700;
+            font-size: 1.1rem;
+            background: linear-gradient(to right, #fff, #aaa);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .nav-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--dim);
+            padding: 0.5rem 1rem;
+            font-weight: 600;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            color: var(--muted);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text);
+        }
+
+        .nav-link.active {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            border: 1px solid var(--border);
+        }
+
+        .nav-link i {
+            width: 20px;
+            text-align: center;
+        }
+
+        .main-content {
+            flex: 1;
+            margin-left: 260px;
+            padding: 2rem 3rem;
+            max-width: 900px;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                margin-left: 0;
+                padding: 1rem;
+            }
+        }
+
+        .mobile-header {
+            display: none;
+            position: sticky;
+            top: 0;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem;
+            z-index: 50;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-header {
+                display: flex;
+            }
+        }
+
+        .menu-btn {
+            background: none;
+            border: none;
+            color: var(--muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Hind Siliguri', sans-serif;
+            color: #fff;
+            line-height: 1.3;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin: 2.5rem 0 1rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.15rem;
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--muted);
+        }
+
+        strong {
+            color: var(--text);
+        }
+
+        .card {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-accent {
+            border-left: 3px solid var(--accent);
+        }
+
+        .card-success {
+            border-left: 3px solid var(--success);
+        }
+
+        .card-warning {
+            border-left: 3px solid var(--warning);
+        }
+
+        .card-error {
+            border-left: 3px solid var(--error);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, rgba(139, 161, 255, 0.1), rgba(167, 139, 250, 0.05));
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: rgba(139, 161, 255, 0.2);
+            color: var(--accent);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            color: var(--text);
+            font-size: 1.1rem;
+        }
+
+        ul,
+        ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            color: var(--muted);
+        }
+
+        li strong {
+            color: var(--accent);
+        }
+
+        code {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: var(--success);
+        }
+
+        blockquote {
+            border-left: 3px solid var(--accent);
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--text);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+        }
+
+        .habit-loop-step {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            padding: 1rem;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .habit-loop-step:hover {
+            border-color: var(--accent);
+        }
+
+        .step-num {
+            font-size: 0.7rem;
+            color: var(--dim);
+            font-family: monospace;
+            margin-bottom: 0.25rem;
+        }
+
+        .step-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-title.cue {
+            color: var(--accent);
+        }
+
+        .step-title.craving {
+            color: #a78bfa;
+        }
+
+        .step-title.response {
+            color: var(--warning);
+        }
+
+        .step-title.reward {
+            color: var(--success);
+        }
+
+        .step-brain {
+            font-size: 0.7rem;
+            color: var(--dim);
+            background: var(--panel);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+            display: inline-block;
+        }
+
+        .accordion {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            margin-bottom: 0.5rem;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accordion-header:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .accordion-title {
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .accordion-subtitle {
+            font-size: 0.85rem;
+            color: var(--dim);
+            margin-left: 0.5rem;
+        }
+
+        .accordion-icon {
+            color: var(--accent);
+            font-size: 1.25rem;
+            transition: transform 0.2s;
+        }
+
+        .accordion.open .accordion-icon {
+            transform: rotate(45deg);
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 0 1.5rem 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .accordion.open .accordion-content {
+            display: block;
+        }
+
+        .code-block {
+            background: var(--bg);
+            border-left: 4px solid var(--warning);
+            padding: 1rem;
+            border-radius: 0 8px 8px 0;
+            font-family: monospace;
+            font-size: 0.85rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+
+        .code-comment {
+            color: var(--dim);
+        }
+
+        .code-var {
+            color: #a78bfa;
+        }
+
+        .code-val {
+            color: var(--warning);
+        }
+
+        .code-result {
+            color: var(--success);
+        }
+
+        .code-result-bad {
+            color: var(--error);
+        }
+
+        .signal-card {
+            background: var(--panel);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+        }
+
+        .signal-card.success {
+            border-top: 4px solid var(--success);
+        }
+
+        .signal-card.warning {
+            border-top: 4px solid var(--warning);
+        }
+
+        .signal-card.danger {
+            border-top: 4px solid var(--error);
+        }
+
+        .signal-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .signal-card.success .signal-title {
+            color: var(--success);
+        }
+
+        .signal-card.warning .signal-title {
+            color: var(--warning);
+        }
+
+        .signal-card.danger .signal-title {
+            color: var(--error);
+        }
+
+        .verdict {
+            background: linear-gradient(135deg, var(--panel), var(--surface));
+            border: 1px solid var(--accent);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .verdict h2 {
+            border: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .verdict ul {
+            list-style: none;
+            margin-left: 0;
+            text-align: left;
+        }
+
+        .verdict li {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .verdict li span:first-child {
+            color: var(--accent);
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 0 2rem;
+            color: var(--dim);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container">
+        <header class="mobile-header">
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <img src="../assets/logo-icon.png" alt="Life-OS" class="brand-logo">
+                <span class="brand-text">Life-OS</span>
+            </div>
+            <button class="menu-btn" onclick="document.querySelector('.sidebar').classList.toggle('active')">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </header>
+
+        <aside class="sidebar">
+            <div class="brand">
+                <img src="../assets/logo-icon.png" alt="Life-OS" class="brand-logo">
+                <span class="brand-text">Life-OS</span>
+            </div>
+
+            <nav>
+                <div class="nav-section">
+                    <div class="nav-label">মূল</div>
+                    <a href="../index.html" class="nav-link"><i class="fa-solid fa-layer-group"></i> সিনথেসিস</a>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-label">বইসমূহ</div>
+                    <a href="atomic-habits.html" class="nav-link active"><i class="fa-solid fa-atom"></i> Atomic
+                        Habits</a>
+                    <a href="deep-work.html" class="nav-link"><i class="fa-solid fa-brain"></i> Deep Work</a>
+                    <a href="daily-stoic.html" class="nav-link"><i class="fa-solid fa-monument"></i> The Daily Stoic</a>
+                    <a href="dopamine-detox.html" class="nav-link"><i class="fa-solid fa-bolt"></i> Dopamine Detox</a>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-label">গাইড</div>
+                    <a href="../guides/unified-study-guide.html" class="nav-link"><i
+                            class="fa-solid fa-book-journal-whills"></i> মাস্টার গাইড</a>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-label">প্রোটোকল</div>
+                    <a href="../protocols/life-protocol.html" class="nav-link"><i class="fa-solid fa-compass"></i> লাইফ
+                        প্রোটোকল</a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <section class="hero">
+                <span class="hero-tag">বই সারসংক্ষেপ</span>
+                <h1>Atomic Habits</h1>
+                <p>ক্ষুদ্র পরিবর্তন, অসাধারণ ফলাফল। প্রতিদিন ১% উন্নতি এক বছরে আপনাকে ৩৭ গুণ ভালো করে তুলবে।</p>
+                <p style="color: var(--muted); font-size: 0.9rem; margin-top: 1rem;">
+                    <i class="fa-solid fa-user"></i> James Clear &nbsp;&nbsp;
+                    <i class="fa-solid fa-book"></i> ২৮৬ পৃষ্ঠা
+                </p>
+            </section>
+
+            <!-- SEGMENT 1: FOUNDATIONS -->
+            <h2>সেগমেন্ট ১: অভ্যন্তরীণ তত্ত্ব ও দর্শন</h2>
+            <p style="color: var(--dim); border-left: 2px solid var(--accent); padding-left: 1rem;">এই অংশে বইটির মূল
+                দার্শনিক ভিত্তি এবং আচরণের পরিবর্তনের মৌলিক মডেলগুলো বিশ্লেষণ করা হয়েছে।</p>
+
+            <!-- Identity Model -->
+            <div class="card card-accent">
+                <h3>পরিচয়-ভিত্তিক অভ্যাস (Identity-Based Habits)</h3>
+                <p><strong>Theory:</strong> প্রকৃত আচরণ পরিবর্তন ফলাফলের ভিত্তিতে নয়, বরং <strong>পরিচয়ের
+                        পরিবর্তনের</strong> মাধ্যমে ঘটে।</p>
+                <p><strong>Mechanism:</strong> আচরণের পরিবর্তনের তিনটি স্তর রয়েছে—ফলাফল, প্রক্রিয়া, এবং পরিচয়।
+                    দীর্ঘস্থায়ী পরিবর্তনের জন্য 'আমি কী চাই' এর পরিবর্তে 'আমি কে হতে চাই' এর ওপর ফোকাস করতে হবে।</p>
+                <ul>
+                    <li><strong>ফলাফল (Outcome):</strong> "আমি ১০ কেজি ওজন কমাতে চাই" — সবচেয়ে বাইরের স্তর।</li>
+                    <li><strong>প্রক্রিয়া (Process):</strong> "আমি জিমে যাব" — মাঝের স্তর।</li>
+                    <li><strong>পরিচয় (Identity):</strong> "আমি একজন সুস্থ মানুষ" — কেন্দ্রবিন্দু।</li>
+                </ul>
+                <blockquote>
+                    💡 <strong>Insight:</strong> প্রতিটি কাজ (Action) হলো আপনি যে ধরণের মানুষ হতে চান, তার পক্ষে একটি
+                    ভোট (Vote)। লক্ষ্য নির্ধারণ করবেন না "আমি একটি বই পড়তে চাই"; বরং সিদ্ধান্ত নিন "আমি একজন পাঠক"।
+                </blockquote>
+            </div>
+
+            <!-- 1% Rule -->
+            <div class="card">
+                <h3>১% ইমপ্রুভমেন্ট রুল (The 1% Rule)</h3>
+                <p><strong>Theory:</strong> প্রতিদিন ১% উন্নতি দীর্ঘমেয়াদে জ্যামিতিক হারে (Compound Interest) বিশাল
+                    ফলাফল বয়ে আনে।</p>
+
+                <div class="code-block">
+                    <p class="code-comment">// Mathematical Model</p>
+                    <p><span class="code-var">const</span> dailyImprovement = <span class="code-val">1.01</span> ^ <span
+                            class="code-val">365</span>;</p>
+                    <p class="code-result">>> Result: 37.78 (37x Better)</p>
+                    <br>
+                    <p><span class="code-var">const</span> dailyDecline = <span class="code-val">0.99</span> ^ <span
+                            class="code-val">365</span>;</p>
+                    <p class="code-result-bad">>> Result: 0.03 (Near Zero)</p>
+                </div>
+
+                <p><strong>Insight:</strong> প্রাথমিক পর্যায়ে পরিবর্তনের ফলাফল দৃশ্যমান হয় না (Valley of
+                    Disappointment)। কিন্তু একটি নির্দিষ্ট সময় পর (Critical Threshold) এর প্রভাব বিস্ফোরক হয়।</p>
+            </div>
+
+            <!-- Habit Loop -->
+            <h3>দ্য হ্যাবিট লুপ মডেল (Neurological Loop)</h3>
+            <p>যেকোনো অভ্যাস চারটি ধাপে কাজ করে:</p>
+
+            <div class="grid-4">
+                <div class="habit-loop-step">
+                    <div class="step-num">STEP 01</div>
+                    <div class="step-title cue">কিউ (Cue)</div>
+                    <p style="font-size: 0.85rem; margin: 0;">ট্রিগার বা সংকেত যা মস্তিষ্ককে কাজ শুরু করার নির্দেশ দেয়।
+                    </p>
+                    <div class="step-brain">Brain: Prediction</div>
+                </div>
+                <div class="habit-loop-step">
+                    <div class="step-num">STEP 02</div>
+                    <div class="step-title craving">ক্রেভিং (Craving)</div>
+                    <p style="font-size: 0.85rem; margin: 0;">অভ্যাসের পিছনের মোটিভেশনাল ফোর্স বা আকাঙ্ক্ষা।</p>
+                    <div class="step-brain">Brain: Desire</div>
+                </div>
+                <div class="habit-loop-step">
+                    <div class="step-num">STEP 03</div>
+                    <div class="step-title response">রেসপন্স (Response)</div>
+                    <p style="font-size: 0.85rem; margin: 0;">প্রকৃত অভ্যাস বা কাজটি যা আপনি করেন।</p>
+                    <div class="step-brain">Brain: Action</div>
+                </div>
+                <div class="habit-loop-step">
+                    <div class="step-num">STEP 04</div>
+                    <div class="step-title reward">রিওয়ার্ড (Reward)</div>
+                    <p style="font-size: 0.85rem; margin: 0;">কাজের পর প্রাপ্ত সন্তুষ্টি বা শিক্ষা।</p>
+                    <div class="step-brain">Brain: Satisfaction</div>
+                </div>
+            </div>
+            <p style="text-align: center; font-size: 0.85rem; color: var(--dim); font-style: italic; margin-top: 1rem;">
+                এই চারটি ধাপের যেকোনো একটি অনুপস্থিত থাকলে অভ্যাস গঠিত হবে না।</p>
+
+            <!-- SEGMENT 2: THE FOUR LAWS -->
+            <h2>সেগমেন্ট ২: আচরণ পরিবর্তনের ৪টি সূত্র</h2>
+            <p style="color: var(--dim);">হ্যাবিট লুপের ওপর ভিত্তি করে আচরণ পরিবর্তনের বা গঠনের চারটি মূল সূত্র।</p>
+
+            <!-- Law 1 -->
+            <div class="accordion" onclick="this.classList.toggle('open')">
+                <div class="accordion-header">
+                    <div>
+                        <span class="accordion-title">১ম সূত্র: মেক ইট অবভিয়াস</span>
+                        <span class="accordion-subtitle">- Cue</span>
+                    </div>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>Theory:</strong> পরিবেশের সংকেতগুলো আচরণের প্রধান চালিকাশক্তি।</p>
+                    <div class="card card-accent" style="margin: 1rem 0;">
+                        <strong style="color: var(--accent);">Mechanism: Habit Stacking</strong>
+                        <code
+                            style="display: block; margin-top: 0.5rem;">[বর্তমান অভ্যাস] এর পরে আমি [নতুন অভ্যাস] করব।</code>
+                    </div>
+                    <p><strong>Practical Application:</strong> ইমপ্লিমেন্টেশন ইনটেনশন (Implementation Intention)। কখন
+                        এবং কোথায় কাজটি করবেন তা স্পষ্টভাবে লিখুন। <code>আমি [সময়] এ [স্থান] এ [কাজ] করব।</code></p>
+                    <p><strong>Key-Signs:</strong> পরিবেশের ডিজাইন পরিবর্তন করুন যাতে ভালো অভ্যাসের সংকেতগুলো চোখের
+                        সামনে থাকে (যেমন: পড়ার জন্য বই টেবিলে রাখা)।</p>
+                </div>
+            </div>
+
+            <!-- Law 2 -->
+            <div class="accordion" onclick="this.classList.toggle('open')">
+                <div class="accordion-header">
+                    <div>
+                        <span class="accordion-title">২য় সূত্র: মেক ইট অ্যাট্রাক্টিভ</span>
+                        <span class="accordion-subtitle">- Craving</span>
+                    </div>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>Theory:</strong> কোনো সুযোগ যত বেশি আকর্ষণীয় হবে, অভ্যাসে পরিণত হওয়ার সম্ভাবনা তত বেশি।
+                    </p>
+                    <p><strong>Neurobiological Hint:</strong> ডোপামিন স্পাইক। ডোপামিন শুধুমাত্র আনন্দ লাভের সময় নয়,
+                        বরং আনন্দের প্রত্যাশার (Anticipation) সময়ও নিঃসৃত হয়।</p>
+                    <div class="card" style="border-left: 3px solid #a78bfa; margin: 1rem 0;">
+                        <strong style="color: #a78bfa;">Mechanism: Temptation Bundling</strong>
+                        <code style="display: block; margin-top: 0.5rem;">[Need to do] + [Want to do]</code>
+                        <span style="font-size: 0.85rem; color: var(--dim);">আপনার 'প্রয়োজনীয় কাজ' এর সাথে 'পছন্দের
+                            কাজ' যুক্ত করা।</span>
+                    </div>
+                    <p><strong>Insight:</strong> আমাদের আচরণ আমাদের চারপাশের সংস্কৃতি (পরিবার, বন্ধু, সমাজ) দ্বারা
+                        প্রভাবিত হয়। এমন গ্রুপে যোগ দিন যেখানে আপনার কাঙ্ক্ষিত আচরণটি 'স্বাভাবিক'।</p>
+                </div>
+            </div>
+
+            <!-- Law 3 -->
+            <div class="accordion" onclick="this.classList.toggle('open')">
+                <div class="accordion-header">
+                    <div>
+                        <span class="accordion-title">৩য় সূত্র: মেক ইট ইজি</span>
+                        <span class="accordion-subtitle">- Response</span>
+                    </div>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>Theory:</strong> মানুষ প্রাকৃতিকভাবেই "ল অফ লিস্ট এফোর্ট" (Law of Least Effort) বা
+                        সর্বনিম্ন প্রচেষ্টার সূত্র মেনে চলে।</p>
+                    <p><strong>Mechanism:</strong> ফ্রিকোয়েন্সি বা পুনরাবৃত্তি। কত সময় ধরে করছেন তার চেয়ে কতবার
+                        (Reps) করছেন তা বেশি গুরুত্বপূর্ণ।</p>
+                    <div class="card" style="border-left: 3px solid var(--warning); margin: 1rem 0;">
+                        <strong style="color: var(--warning);">Practical: The 2-Minute Rule</strong>
+                        <p style="margin: 0.5rem 0 0;">যেকোনো নতুন অভ্যাস শুরু করার সময় তা যেন ২ মিনিটের কম সময়ে করা
+                            যায়।</p>
+                    </div>
+                    <p><strong>Micro-Steps:</strong> পরিবেশকে এমনভাবে প্রস্তুত করুন (Prime the Environment) যাতে পরবর্তী
+                        কাজটি করা সহজ হয় (যেমন: জিম এর পোশাক আগের রাতে তৈরি রাখা)।</p>
+                </div>
+            </div>
+
+            <!-- Law 4 -->
+            <div class="accordion" onclick="this.classList.toggle('open')">
+                <div class="accordion-header">
+                    <div>
+                        <span class="accordion-title">৪র্থ সূত্র: মেক ইট স্যাটিসফাইং</span>
+                        <span class="accordion-subtitle">- Reward</span>
+                    </div>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>Theory:</strong> যা পুরস্কৃত হয় তা পুনরাবৃত্তি হয়; যা শাস্তিযোগ্য তা এড়ানো হয়।</p>
+                    <p><strong>Mechanism:</strong> তাৎক্ষণিক তৃপ্তি (Immediate Gratification) বনাম বিলম্বিত তৃপ্তি
+                        (Delayed Gratification)। মস্তিষ্ক তাৎক্ষণিক পুরস্কার বেশি পছন্দ করে।</p>
+                    <div class="card" style="border-left: 3px solid var(--success); margin: 1rem 0;">
+                        <strong style="color: var(--success);">Practical: Habit Tracker</strong>
+                        <p style="margin: 0.5rem 0 0;">"চেইন ভাঙবেন না" (Don't break the chain) নীতি অনুসরণ করুন।</p>
+                    </div>
+                    <p style="color: var(--error);"><strong>⚠️ Early-warning Signs:</strong> পরপর দুইবার অভ্যাস মিস করা
+                        হলো নতুন (বাজে) অভ্যাসের শুরু। "Never miss twice."</p>
+                </div>
+            </div>
+
+            <!-- SEGMENT 3: SCIENTIFIC ENGINE -->
+            <h2>সেগমেন্ট ৩: বৈজ্ঞানিক ভিত্তি ও সিস্টেমস থিঙ্কিং</h2>
+
+            <div class="grid-2">
+                <div class="card">
+                    <h3 style="color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 0.5rem;">১.
+                        নিউরোবায়োলজি</h3>
+                    <p><strong>Hebb's Law:</strong> "Neurons that fire together, wire together." পুনরাবৃত্তির মাধ্যমে
+                        মস্তিষ্কের নিউরাল পাথওয়ে শক্তিশালী হয় (Long-term Potentiation)।</p>
+                    <p><strong>Dopamine Loop:</strong> অভ্যাস একটি ডোপামিন-চালিত ফিডব্যাক লুপ। আকাঙ্ক্ষা (Craving) হলো
+                        নিউরোট্রান্সমিটারের প্রতিক্রিয়া যা আমাদের কাজ করতে বাধ্য করে।</p>
+                </div>
+
+                <div class="card">
+                    <h3 style="color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 0.5rem;">২.
+                        সিস্টেমস থিঙ্কিং</h3>
+                    <p><strong>Goals vs. Systems:</strong> লক্ষ্য হলো আপনি যা অর্জন করতে চান। সিস্টেম হলো সেই প্রক্রিয়া
+                        যা আপনাকে লক্ষ্যে পৌঁছে দেয়।</p>
+                    <p><strong>Insight:</strong> "You do not rise to the level of your goals. You fall to the level of
+                        your systems." দীর্ঘমেয়াদী সাফল্যের জন্য লক্ষ্য নয়, সিস্টেমের ওপর ফোকাস করতে হবে।</p>
+                </div>
+            </div>
+
+            <div class="card" style="background: linear-gradient(to right, var(--panel), rgba(139,161,255,0.05));">
+                <h3>৩. গোল্ডিলক্স রুল (The Goldilocks Rule)</h3>
+                <p><strong>Theory:</strong> মানুষ সর্বোচ্চ মোটিভেশন অনুভব করে যখন কাজটি খুব কঠিনও না আবার খুব সহজও
+                    না—বরং বর্তমান সক্ষমতার সীমানায় থাকে।</p>
+                <p style="color: var(--accent);">💡 <strong>Key-Sign:</strong> বোরডম বা একঘেয়েমি কাটিয়ে কাজ চালিয়ে
+                    যাওয়া হলো পেশাদারিত্বের লক্ষণ।</p>
+            </div>
+
+            <!-- SEGMENT 5: SIGNALS -->
+            <h2>সেগমেন্ট ৪: ব্যবহারিক সংকেত (Actionable Signals)</h2>
+
+            <div class="grid-3" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+                <div class="signal-card success">
+                    <div class="signal-title">✅ হ্যাবিট গ্রোথ সিগন্যাল</div>
+                    <ul style="font-size: 0.9rem;">
+                        <li><strong>স্বয়ংক্রিয়তা:</strong> যখন কোনো কাজ চিন্তা না করেই শুরু হয়ে যায়।</li>
+                        <li><strong>পরিচয় পরিবর্তন:</strong> যখন আপনি বলেন "আমি ধুমপায়ী নই" (চেষ্টা করছি নয়)।</li>
+                        <li><strong>দ্বিধা হ্রাস:</strong> কাজের শুরুতে মানসিক বাধা কমে যাওয়া।</li>
+                    </ul>
+                </div>
+
+                <div class="signal-card danger">
+                    <div class="signal-title">⚠️ হ্যাবিট ক্ষয়ের লক্ষণ</div>
+                    <ul style="font-size: 0.9rem;">
+                        <li><strong>Never Miss Twice:</strong> একদিন বাদ পড়া ভুল, কিন্তু পরপর দুইদিন বাদ পড়া হলো নতুন
+                            অভ্যাসের শুরু।</li>
+                        <li><strong>লক্ষ্য ফোকাসড:</strong> সিস্টেমের উন্নতি না করে শুধুমাত্র ফলাফলের দিকে তাকিয়ে থাকা।
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="signal-card warning">
+                    <div class="signal-title">💡 এনভায়রনমেন্ট ডিজাইন</div>
+                    <ul style="font-size: 0.9rem;">
+                        <li><strong>Visual Cues:</strong> ভালো অভ্যাসের ট্রিগারগুলো দৃশ্যমান স্থানে রাখুন।</li>
+                        <li><strong>Friction Management:</strong> ভালো অভ্যাসের স্টেপ কমান, বাজে অভ্যাসের ধাপ বাড়ান।
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Verdict -->
+            <section class="verdict">
+                <h2>🔎 চূড়ান্ত রায় (Verdict)</h2>
+                <ul>
+                    <li><span>❖</span><span><strong>তত্ত্ব:</strong> অভ্যাস হলো আত্ম-উন্নতির যৌগিক সুদ (Compound
+                            Interest)। ছোট পরিবর্তন দীর্ঘমেয়াদে বিশাল পার্থক্য তৈরি করে।</span></li>
+                    <li><span>❖</span><span><strong>পদ্ধতি:</strong> আইডেন্টিটি বা পরিচয় পরিবর্তনের মাধ্যমে অভ্যাস শুরু
+                            করুন, শুধুমাত্র ফলাফলের জন্য নয়।</span></li>
+                    <li><span>❖</span><span><strong>কাঠামো:</strong> কিউ (Cue), ক্রেভিং (Craving), রেসপন্স (Response),
+                            এবং রিওয়ার্ড (Reward)—এই চারটি ধাপকে অপটিমাইজ করার মাধ্যমেই যেকোনো অভ্যাস তৈরি বা ভাঙা
+                            সম্ভব।</span></li>
+                    <li><span>❖</span><span><strong>মূলমন্ত্র:</strong> লক্ষ্য ভুলে যান, সিস্টেমে ফোকাস করুন। একঘেয়েমি
+                            (Boredom) কাটিয়ে কাজ চালিয়ে যাওয়াই হলো এক্সিলেন্স।</span></li>
+                </ul>
+            </section>
+
+            <footer>
+                <p>Atomic Habits Research Framework | Life-OS</p>
+            </footer>
+        </main>
+
+        <!-- Bottom Navigation for Mobile -->
+        <nav class="bottom-nav">
+            <div class="bottom-nav-items">
+                <a href="../index.html" class="bottom-nav-item">
+                    <i class="fa-solid fa-house"></i>
+                    <span>হোম</span>
+                </a>
+                <a href="../index.html#books" class="bottom-nav-item">
+                    <i class="fa-solid fa-book"></i>
+                    <span>বইসমূহ</span>
+                </a>
+                <a href="../guides/unified-study-guide.html" class="bottom-nav-item">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span>গাইড</span>
+                </a>
+                <a href="../protocols/life-protocol.html" class="bottom-nav-item">
+                    <i class="fa-solid fa-compass"></i>
+                    <span>প্রোটোকল</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <script src="../js/mobile-interactions.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script>
+        document.querySelector('.menu-btn')?.addEventListener('click', () => {
+            document.querySelector('.sidebar').classList.toggle('active');
+        });
+
+        // Register Service Worker for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('../sw.js')
+                    .then(registration => {
+                        console.log('[PWA] Service Worker registered:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('[PWA] Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+[2025-12-07 00:08:05] Starting Migration...
+[2025-12-07 00:08:05] === STEP 1: IMMEDIATE COPY / ARCHIVE ===
+[2025-12-07 00:08:05] Archived books to C:\Users\Adnan Shahria\Desktop\Project-1\my-app\src/_archive/original_site\books
+[2025-12-07 00:08:05] Archived guides to C:\Users\Adnan Shahria\Desktop\Project-1\my-app\src/_archive/original_site\guides
+[2025-12-07 00:08:05] Archived protocols to C:\Users\Adnan Shahria\Desktop\Project-1\my-app\src/_archive/original_site\protocols
+[2025-12-07 00:08:05] Archived assets to C:\Users\Adnan Shahria\Desktop\Project-1\my-app\public/_archive_assets\assets
+[2025-12-07 00:08:05] Archived css to C:\Users\Adnan Shahria\Desktop\Project-1\my-app\src/styles/_legacy and C:\Users\Adnan Shahria\Desktop\Project-1\my-app\public/_archive_assets/css
+[2025-12-07 00:08:05] Archived js to C:\Users\Adnan Shahria\Desktop\Project-1\my-app\src/_archive_js and C:\Users\Adnan Shahria\Desktop\Project-1\my-app\public/_archive_assets/js
+[2025-12-07 00:08:05] === STEP 2: VERIFY ARCHIVE ===
+[2025-12-07 00:08:06] Verification Successful.
+[2025-12-07 00:08:06] === STEP 3: LINK / RESOURCE MAP ===
+[2025-12-07 00:08:06] Resource map generated at C:\Users\Adnan Shahria\Desktop\Project-1\my-app\scripts/resource-map.json
+[2025-12-07 00:08:06] === STEP 4: SAFE-CONVERTED CONTENT CREATION ===
+[2025-12-07 00:08:06] Created MDX stub: C:\Users\Adnan Shahria\Desktop\Project-1\my-app\src\books\atomic-habits.mdx
+[2025-12-07 00:08:06] Created MDX stub: C:\Users\Adnan Shahria\Desktop\Project-1\my-app\src\books\daily-stoic.mdx
+[2025-12-07 00:08:06] Created MDX stub: C:\Users\Adnan Shahria\Desktop\Project-1\my-app\src\books\deep-work.mdx
+[2025-12-07 00:08:06] Created MDX stub: C:\Users\Adnan Shahria\Desktop\Project-1\my-app\src\books\dopamine-detox.mdx
+[2025-12-07 00:08:06] Created MDX stub: C:\Users\Adnan Shahria\Desktop\Project-1\my-app\src\guides\study-guide-1.mdx
+[2025-12-07 00:08:06] Created MDX stub: C:\Users\Adnan Shahria\Desktop\Project-1\my-app\src\guides\study-guide-2.mdx
+[2025-12-07 00:08:06] Created MDX stub: C:\Users\Adnan Shahria\Desktop\Project-1\my-app\src\guides\unified-study-guide.mdx
+[2025-12-07 00:08:06] Created MDX stub: C:\Users\Adnan Shahria\Desktop\Project-1\my-app\src\protocols\life-protocol.mdx
+[2025-12-07 00:08:06] === STEP 5: JS STUBS ===
+[2025-12-07 00:08:06] === STEP 8: QA REPORT ===
+[2025-12-07 00:08:06] Report generated at C:\Users\Adnan Shahria\Desktop\Project-1\my-app\reports/migration-report.json
+[2025-12-07 00:08:06] Migration Script Complete.

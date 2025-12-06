@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dopamine Detox | Life-OS</title>
+    <meta name="description" content="ডোপামিন রিসেট এবং মনোযোগ ফিরিয়ে আনার কৌশল।">
+
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#050608">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Life-OS">
+    <link rel="manifest" href="../manifest.webmanifest">
+    <link rel="apple-touch-icon" href="../assets/icon-192.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/mobile.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        :root {
+            --bg: #050608;
+            --panel: #0b0f14;
+            --surface: #12161c;
+            --text: #e2e8f0;
+            --muted: #94a3b8;
+            --dim: #64748b;
+            --accent: #6AA6FF;
+            --purple: #A188FF;
+            --success: #00FF9D;
+            --warning: #f59e0b;
+            --error: #FF2A6D;
+            --border: rgba(255, 255, 255, 0.08);
+            --radius: 12px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Hind Siliguri', 'Inter', system-ui, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #10b981, #8b5cf6);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #C9A86A, #10b981);
+        }
+
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: #10b981 #050608;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 32px 32px;
+            pointer-events: none;
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 260px;
+            background: var(--panel);
+            border-right: 1px solid var(--border);
+            padding: 1.5rem 1rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+
+            .sidebar.active {
+                display: block;
+            }
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .brand-logo {
+            height: 36px;
+            width: auto;
+            border-radius: 6px;
+        }
+
+        .brand-text {
+            font-weight: 700;
+            font-size: 1.1rem;
+            background: linear-gradient(to right, #fff, #aaa);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: white;
+            display: block;
+        }
+
+        .brand-text {
+            font-weight: 700;
+            font-size: 1.1rem;
+            background: linear-gradient(to right, #fff, #aaa);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .nav-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--dim);
+            padding: 0.5rem 1rem;
+            font-weight: 600;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            color: var(--muted);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text);
+        }
+
+        .nav-link.active {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            border: 1px solid var(--border);
+        }
+
+        .nav-link i {
+            width: 20px;
+            text-align: center;
+        }
+
+        .main-content {
+            flex: 1;
+            margin-left: 260px;
+            padding: 2rem 3rem;
+            max-width: 900px;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                margin-left: 0;
+                padding: 1rem;
+            }
+        }
+
+        .mobile-header {
+            display: none;
+            position: sticky;
+            top: 0;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem;
+            z-index: 50;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-header {
+                display: flex;
+            }
+        }
+
+        .menu-btn {
+            background: none;
+            border: none;
+            color: var(--muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Hind Siliguri', sans-serif;
+            color: #fff;
+            line-height: 1.3;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin: 2.5rem 0 1rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        h3 {
+            font-size: 1.15rem;
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--muted);
+        }
+
+        strong {
+            color: var(--text);
+        }
+
+        .card {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-accent {
+            border-left: 3px solid var(--accent);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, rgba(106, 166, 255, 0.08), rgba(161, 136, 255, 0.05));
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(106, 166, 255, 0.1), transparent 70%);
+            z-index: 0;
+        }
+
+        .hero>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: rgba(161, 136, 255, 0.2);
+            color: var(--purple);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(to right, var(--accent), var(--purple));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 1rem;
+        }
+
+        ul,
+        ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            color: var(--muted);
+        }
+
+        li strong {
+            color: var(--purple);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .trap-card {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            transition: all 0.2s;
+        }
+
+        .trap-card:hover {
+            border-color: var(--accent);
+        }
+
+        .trap-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .flashcard {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            min-height: 160px;
+        }
+
+        .flashcard:hover {
+            border-color: var(--accent);
+            background: rgba(106, 166, 255, 0.05);
+        }
+
+        .flashcard h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .flashcard p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .protocol-tabs {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .tab-headers {
+            display: flex;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 1rem;
+            background: none;
+            border: none;
+            color: var(--muted);
+            font-weight: 600;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+        }
+
+        .tab-btn:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .tab-btn.active {
+            color: var(--error);
+            border-bottom-color: var(--error);
+        }
+
+        .tab-btn.active.blue {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        .tab-btn.active.green {
+            color: var(--success);
+            border-bottom-color: var(--success);
+        }
+
+        .tab-content {
+            padding: 1.5rem;
+            min-height: 250px;
+        }
+
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        .level-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .level-tag.extreme {
+            background: rgba(255, 42, 109, 0.2);
+            color: var(--error);
+        }
+
+        .level-tag.medium {
+            background: rgba(106, 166, 255, 0.2);
+            color: var(--accent);
+        }
+
+        .level-tag.lifestyle {
+            background: rgba(0, 255, 157, 0.2);
+            color: var(--success);
+        }
+
+        .signal-panel {
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .signal-panel.danger {
+            background: rgba(255, 42, 109, 0.05);
+            border: 1px solid rgba(255, 42, 109, 0.2);
+        }
+
+        .signal-panel.success {
+            background: rgba(0, 255, 157, 0.05);
+            border: 1px solid rgba(0, 255, 157, 0.2);
+        }
+
+        .signal-indicator {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .signal-indicator.danger {
+            background: var(--error);
+            animation: pulse 2s infinite;
+        }
+
+        .signal-indicator.success {
+            background: var(--success);
+            box-shadow: 0 0 10px var(--success);
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .signal-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .signal-panel.danger .signal-title {
+            color: var(--error);
+        }
+
+        .signal-panel.success .signal-title {
+            color: var(--success);
+        }
+
+        .signal-list {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .signal-list li {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .signal-num {
+            font-family: monospace;
+            font-size: 0.85rem;
+        }
+
+        .banned-allowed {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .ban-list,
+        .allow-list {
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .ban-list {
+            background: rgba(255, 42, 109, 0.05);
+            border: 1px solid rgba(255, 42, 109, 0.3);
+        }
+
+        .allow-list {
+            background: rgba(0, 255, 157, 0.05);
+            border: 1px solid rgba(0, 255, 157, 0.3);
+        }
+
+        .ban-list h4 {
+            color: var(--error);
+            font-size: 0.85rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .allow-list h4 {
+            color: var(--success);
+            font-size: 0.85rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .ban-list ul,
+        .allow-list ul {
+            font-size: 0.8rem;
+            font-family: monospace;
+        }
+
+        .chart-container {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .chart-container canvas {
+            max-height: 200px;
+        }
+
+        .verdict {
+            background: linear-gradient(135deg, var(--panel), var(--surface));
+            border: 1px solid var(--accent);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .verdict h2 {
+            border: none;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .verdict p {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .balance-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            font-family: monospace;
+            font-size: 0.85rem;
+            margin: 2rem 0;
+        }
+
+        .balance-visual .left {
+            color: var(--error);
+            text-align: right;
+        }
+
+        .balance-visual .vs {
+            color: var(--dim);
+            font-size: 1.5rem;
+        }
+
+        .balance-visual .right {
+            color: var(--success);
+            text-align: left;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 0 2rem;
+            color: var(--dim);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container">
+        <header class="mobile-header">
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <img src="../assets/logo-icon.png" alt="Life-OS" class="brand-logo">
+                <span class="brand-text">Life-OS</span>
+            </div>
+            <button class="menu-btn" onclick="document.querySelector('.sidebar').classList.toggle('active')">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </header>
+
+        <aside class="sidebar">
+            <div class="brand">
+                <img src="../assets/logo-icon.png" alt="Life-OS" class="brand-logo">
+                <span class="brand-text">Life-OS</span>
+            </div>
+
+            <nav>
+                <div class="nav-section">
+                    <div class="nav-label">মূল</div>
+                    <a href="../index.html" class="nav-link"><i class="fa-solid fa-layer-group"></i> সিনথেসিস</a>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-label">বইসমূহ</div>
+                    <a href="atomic-habits.html" class="nav-link"><i class="fa-solid fa-atom"></i> Atomic Habits</a>
+                    <a href="deep-work.html" class="nav-link"><i class="fa-solid fa-brain"></i> Deep Work</a>
+                    <a href="daily-stoic.html" class="nav-link"><i class="fa-solid fa-monument"></i> The Daily Stoic</a>
+                    <a href="dopamine-detox.html" class="nav-link active"><i class="fa-solid fa-bolt"></i> Dopamine
+                        Detox</a>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-label">গাইড</div>
+                    <a href="../guides/unified-study-guide.html" class="nav-link"><i
+                            class="fa-solid fa-book-journal-whills"></i> মাস্টার গাইড</a>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-label">প্রোটোকল</div>
+                    <a href="../protocols/life-protocol.html" class="nav-link"><i class="fa-solid fa-compass"></i> লাইফ
+                        প্রোটোকল</a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <section class="hero">
+                <span class="hero-tag">Research Framework v1.0</span>
+                <h1>ডোপামিন <span>ডিটক্স</span></h1>
+                <p>আচরণগত মনোবিজ্ঞান ও মনোযোগ প্রকৌশলের মাধ্যমে মস্তিষ্কের ফোকাস পুনরুদ্ধারের বৈজ্ঞানিক ব্লু-প্রিন্ট।
+                </p>
+                <p style="color: var(--accent); font-size: 0.9rem;">"Stimulation Gap কমিয়ে জ্ঞানীয় কার্যকারিতা
+                    পুনরুদ্ধার"</p>
+            </section>
+
+            <!-- SEGMENT 1: CORE THEORY -->
+            <h2>১. অভ্যন্তরীণ তত্ত্ব</h2>
+
+            <div class="grid-2">
+                <div class="card card-accent">
+                    <h3>ডোপামিন কী?</h3>
+                    <p>ডোপামিন কেবল 'সুখের অণু' (Molecule of Pleasure) নয়, এটি মূলত <strong
+                            style="color: var(--text);">'প্রত্যাশার অণু' (Molecule of Anticipation)</strong>।</p>
+                    <p>আধুনিক ডিজিটাল ইকোসিস্টেম আমাদের মস্তিষ্কের রিওয়ার্ড সিস্টেমকে হাইজ্যাক করে কৃত্রিমভাবে
+                        ডোপামিনের বেসলাইন বাড়িয়ে দেয়।</p>
+                </div>
+
+                <div class="chart-container">
+                    <h4 style="font-size: 0.75rem; color: var(--dim); margin-bottom: 1rem;">Fig 1.1: Prediction Error
+                    </h4>
+                    <canvas id="predictionChart"></canvas>
+                    <p style="text-align: center; font-size: 0.75rem; color: var(--dim); margin-top: 0.5rem;">Dopamine
+                        spikes during *Anticipation*, not Reward.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>স্টিমুলেশন গ্যাপ</h3>
+                <p>যখন উচ্চ উদ্দীপক (সোশ্যাল মিডিয়া) কাজে অভ্যস্ত হই, তখন মস্তিষ্ক কম উদ্দীপক কাজ (কাজ/পড়া)
+                    প্রত্যাখ্যান করে। স্বাভাবিক ও কম উদ্দীপক কাজগুলো (যেমন: পড়াশোনা বা গভীর চিন্তা) অসম্ভব বিরক্তিকর
+                    মনে হয়। একে বলা হয় <strong style="color: var(--purple);">"স্টিমুলেশন গ্যাপ"</strong>।</p>
+            </div>
+
+            <!-- SEGMENT 2: TRAPS -->
+            <h2>২. স্টিমুলেশন ট্র্যাপ ও মেকানিজম</h2>
+
+            <div class="grid-2">
+                <div class="trap-card">
+                    <div class="trap-icon">🕸️</div>
+                    <h3>স্টিমুলেশন ট্র্যাপ</h3>
+                    <p style="font-size: 0.9rem;">মস্তিষ্ক সবসময় সহজ এবং আনন্দদায়ক কাজ বেছে নেয়। যখন আমরা উচ্চ
+                        উদ্দীপক কাজে অভ্যস্ত হই, তখন মস্তিষ্ক কম উদ্দীপক কাজ প্রত্যাখ্যান করে। এটি একটি আসক্তি-সদৃশ
+                        রিইনফোর্সমেন্ট সাইকেল তৈরি করে।</p>
+                </div>
+
+                <div class="trap-card">
+                    <div class="trap-icon">⭕</div>
+                    <h3>ওপেন লুপ সিস্টেম</h3>
+                    <p style="font-size: 0.9rem;">ডিজিটাল দুনিয়া 'ওপেন লুপ' (অসমাপ্ত কাজ/স্ক্রল) তৈরি করে যা মস্তিষ্ককে
+                        বিশ্রাম নিতে দেয় না। ডিটক্সের লক্ষ্য হলো 'ক্লোজড লুপ' সিস্টেমে ফিরে আসা, যেখানে একটি কাজ শুরু
+                        হয় এবং শেষ হয়।</p>
+                </div>
+            </div>
+
+            <!-- Flashcards -->
+            <h3>নিউরোবায়োলজিক্যাল মেকানিজম</h3>
+            <div class="grid-2" style="margin-top: 1rem;">
+                <div class="flashcard">
+                    <h4>ওভার-স্টিমুলেশন ডায়নামিক্স</h4>
+                    <p>উচ্চ উদ্দীপনা সহনশীলতা (Tolerance) তৈরি করে। মস্তিষ্ক যখন ক্রমাগত হাই-ডোপামিন ইনপুট পায়, তখন তার
+                        রিসেপ্টরগুলো ডাউনরেগুলেট (সংবেদনশীলতা কমানো) করে ফেলে।</p>
+                </div>
+                <div class="flashcard">
+                    <h4 style="color: var(--purple);">স্বল্পমেয়াদী অন্ধত্ব</h4>
+                    <p>অতিরিক্ত ডোপামিন প্রিফ্রন্টাল কর্টেক্সের কার্যকারিতা ব্যাহত করে, ফলে দীর্ঘমেয়াদী পরিণাম চিন্তা
+                        করার ক্ষমতা কমে যায়। ডিটক্স নিউরাল পাথওয়েগুলো রিসেট করে ফোকাস ফিরিয়ে আনে।</p>
+                </div>
+            </div>
+
+            <!-- SEGMENT 3: PROTOCOLS -->
+            <h2>৩. ডিটক্স প্রোটোকল</h2>
+
+            <div class="protocol-tabs">
+                <div class="tab-headers">
+                    <button class="tab-btn active" onclick="showTab('tab1', this)">HARD RESET (48H)</button>
+                    <button class="tab-btn" onclick="showTab('tab2', this)">ROUTINE (24H)</button>
+                    <button class="tab-btn" onclick="showTab('tab3', this)">PARTIAL</button>
+                </div>
+
+                <div class="tab-content">
+                    <!-- 48H Tab -->
+                    <div id="tab1" class="tab-panel active">
+                        <span class="level-tag extreme">LEVEL: EXTREME</span>
+                        <h3>৪৮ ঘণ্টার সম্পূর্ণ রিসেট</h3>
+                        <p>এটি সবচেয়ে শক্তিশালী প্রোটোকল, যা মস্তিষ্কের ডোপামিন রিসেপ্টরগুলিকে পুনরায় সংবেদনশীল করে
+                            তোলে।</p>
+
+                        <div class="banned-allowed">
+                            <div class="ban-list">
+                                <h4>⛔ STRICTLY BANNED</h4>
+                                <ul>
+                                    <li>> ইন্টারনেট ও সোশ্যাল মিডিয়া</li>
+                                    <li>> ভিডিও গেম ও বিনোদন</li>
+                                    <li>> সঙ্গীত (উচ্চ উদ্দীপক)</li>
+                                    <li>> সুস্বাদু খাবার</li>
+                                </ul>
+                            </div>
+                            <div class="allow-list">
+                                <h4>✅ ALLOWED</h4>
+                                <ul>
+                                    <li>> হাঁটা (প্রকৃতি)</li>
+                                    <li>> জার্নালিং (কাগজ-কলম)</li>
+                                    <li>> মেডিটেশন / নামাজ</li>
+                                    <li>> সাধারণ খাবার</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 24H Tab -->
+                    <div id="tab2" class="tab-panel">
+                        <span class="level-tag medium">LEVEL: MEDIUM</span>
+                        <h3>২৪ ঘণ্টার রুটিন রিসেট</h3>
+                        <p>সাপ্তাহিক ছুটির দিনের জন্য উপযুক্ত। ইন্টারনেট সংযোগ সম্পূর্ণ বিচ্ছিন্ন রাখুন।</p>
+                        <ul style="margin-top: 1rem;">
+                            <li>বই পড়া অনুমোদিত (ফিকশন বাদে)</li>
+                            <li>পরিবারের সাথে সময় কাটানো</li>
+                            <li>পরবর্তী সপ্তাহের পরিকল্পনা</li>
+                        </ul>
+                    </div>
+
+                    <!-- Partial Tab -->
+                    <div id="tab3" class="tab-panel">
+                        <span class="level-tag lifestyle">LEVEL: LIFESTYLE</span>
+                        <h3>আংশিক ডিটক্স (লাইফস্টাইল)</h3>
+                        <p>দৈনন্দিন জীবনে প্রয়োগযোগ্য। দীর্ঘমেয়াদী অভ্যাসের জন্য সবচেয়ে কার্যকর।</p>
+                        <div class="card" style="margin-top: 1rem;">
+                            <p style="margin: 0;"><strong style="color: var(--success);">🎯 মর্নিং রুটিন রুল:</strong>
+                                ঘুম থেকে ওঠার প্রথম ২ ঘণ্টা কোনো স্ক্রিন নয়।</p>
+                        </div>
+                        <div class="card" style="margin-top: 0.5rem;">
+                            <p style="margin: 0;"><strong style="color: var(--success);">🌙 ইভিনিং রুল:</strong> ঘুমানোর
+                                ১ ঘণ্টা আগে সব ইলেকট্রনিক ডিভাইস বন্ধ।</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEGMENT 4: DIAGNOSTIC SIGNALS -->
+            <h2>৪. ডায়াগনস্টিক সিগন্যাল</h2>
+
+            <div class="grid-2">
+                <div class="signal-panel danger">
+                    <div class="signal-indicator danger"></div>
+                    <h3 class="signal-title">🔴 ওভার-স্টিমুলেশন লক্ষণ</h3>
+                    <ul class="signal-list">
+                        <li>
+                            <span class="signal-num" style="color: var(--error);">01.</span>
+                            <span>অকারণে ফোন চেক করা (Unconscious checking)।</span>
+                        </li>
+                        <li>
+                            <span class="signal-num" style="color: var(--error);">02.</span>
+                            <span>খাবার খাওয়ার সময় কিছু দেখার তীব্র ইচ্ছা।</span>
+                        </li>
+                        <li>
+                            <span class="signal-num" style="color: var(--error);">03.</span>
+                            <span>একটানা ১০ মিনিট চুপ করে বসে থাকতে অস্থিরতা।</span>
+                        </li>
+                        <li>
+                            <span class="signal-num" style="color: var(--error);">04.</span>
+                            <span>কঠিন কাজ শুরু করার আগে কফি বা স্ন্যাকস খোঁজা।</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="signal-panel success">
+                    <div class="signal-indicator success"></div>
+                    <h3 class="signal-title">🟢 রিকভারি লক্ষণ</h3>
+                    <ul class="signal-list">
+                        <li>
+                            <span class="signal-num" style="color: var(--success);">01.</span>
+                            <span>'বোরিং' কাজ করার সময় মানসিক স্থিতি ফিরে পাওয়া।</span>
+                        </li>
+                        <li>
+                            <span class="signal-num" style="color: var(--success);">02.</span>
+                            <span>ভবিষ্যৎ লক্ষ্য নিয়ে চিন্তা করার স্বচ্ছতা।</span>
+                        </li>
+                        <li>
+                            <span class="signal-num" style="color: var(--success);">03.</span>
+                            <span>ছোট ছোট জিনিসে আনন্দ পাওয়া (প্রকৃতি, স্বাদ)।</span>
+                        </li>
+                        <li>
+                            <span class="signal-num" style="color: var(--success);">04.</span>
+                            <span>Procrastination লুপ ভাঙার সক্ষমতা।</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- SEGMENT 5: SYSTEM -->
+            <h2>৫. সিস্টেম আর্কিটেকচার</h2>
+
+            <div class="card">
+                <div class="grid-2">
+                    <div>
+                        <h4 style="color: var(--purple);">এনভায়রনমেন্টাল ফ্রিকশন</h4>
+                        <p style="font-size: 0.9rem;">ডোপামিন ডিটক্স মূলত পরিবেশ নিয়ন্ত্রণের মাধ্যমে ইচ্ছাশক্তির ওপর
+                            নির্ভরতা কমানোর বিজ্ঞান। খারাপ অভ্যাসের অ্যাক্সেস কঠিন করুন (ফোন ড্রয়ারে), ভালো অভ্যাসের
+                            ঘর্ষণ কমান।</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--purple);">প্রক্র্যাস্টিনেশন মডেল</h4>
+                        <p style="font-size: 0.9rem;">যখন কোনো কাজের "পেইন" (কষ্ট), বর্তমান ডোপামিন স্তরের চেয়ে বেশি
+                            হয়, তখন আমরা প্রক্র্যাস্টিনেট করি। ডিটক্স এই "পেইন থ্রেশহোল্ড" কমিয়ে দেয়, ফলে কাজ সহজ মনে
+                            হয়।</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Balance Visual -->
+            <div class="balance-visual">
+                <div class="left">CHEAP DOPAMINE<br><span style="font-size: 0.7rem;">(Instant Gratification)</span>
+                </div>
+                <div class="vs">⚖️</div>
+                <div class="right">OXYTOCIN / SEROTONIN<br><span style="font-size: 0.7rem;">(Here & Now)</span></div>
+            </div>
+
+            <!-- Verdict -->
+            <section class="verdict">
+                <h2>নিউরোট্রান্সমিটার ব্যালেন্স</h2>
+                <p>লক্ষ্য হলো সস্তা ডোপামিন কমিয়ে সেরোটোনিন ও অক্সিটোসিনের মাত্রা বাড়ানো। রিলাপস স্বাভাবিক। লক্ষণ দেখা
+                    মাত্রই '২৪ ঘণ্টার রিসেট' চালু করুন। নিজেকে দোষারোপ না করে সিস্টেমে ফিরে আসুন।</p>
+            </section>
+
+            <footer>
+                <p>DOPAMINE DETOX KNOWLEDGE SYSTEM | Life-OS</p>
+            </footer>
+        </main>
+
+        <!-- Bottom Navigation for Mobile -->
+        <nav class="bottom-nav">
+            <div class="bottom-nav-items">
+                <a href="../index.html" class="bottom-nav-item">
+                    <i class="fa-solid fa-house"></i>
+                    <span>হোম</span>
+                </a>
+                <a href="../index.html#books" class="bottom-nav-item">
+                    <i class="fa-solid fa-book"></i>
+                    <span>বইসমূহ</span>
+                </a>
+                <a href="../guides/unified-study-guide.html" class="bottom-nav-item">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span>গাইড</span>
+                </a>
+                <a href="../protocols/life-protocol.html" class="bottom-nav-item">
+                    <i class="fa-solid fa-compass"></i>
+                    <span>প্রোটোকল</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <script>
+        document.querySelector('.menu-btn')?.addEventListener('click', () => {
+            document.querySelector('.sidebar').classList.toggle('active');
+        });
+
+        // Tab Switching
+        function showTab(tabId, btn) {
+            document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active', 'blue', 'green'));
+            document.getElementById(tabId).classList.add('active');
+            btn.classList.add('active');
+            if (tabId === 'tab2') btn.classList.add('blue');
+            if (tabId === 'tab3') btn.classList.add('green');
+        }
+
+        // Chart: Prediction Error
+        const ctxPrediction = document.getElementById('predictionChart').getContext('2d');
+        new Chart(ctxPrediction, {
+            type: 'line',
+            data: {
+                labels: ['Trigger', 'Action', 'Reward', 'Post-Reward'],
+                datasets: [{
+                    label: 'Dopamine Spike',
+                    data: [20, 95, 40, 15],
+                    borderColor: '#6AA6FF',
+                    backgroundColor: 'rgba(106, 166, 255, 0.1)',
+                    borderWidth: 2,
+                    fill: true,
+                    tension: 0.4,
+                    pointBackgroundColor: '#050608',
+                    pointBorderColor: '#6AA6FF',
+                    pointRadius: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: { display: false, grid: { display: false } },
+                    x: { grid: { color: '#1e293b' }, ticks: { color: '#64748b' } }
+                }
+            }
+        });
+    </script>
+    <script src="../js/mobile-interactions.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script>
+        // Register Service Worker for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('../sw.js')
+                    .then(registration => {
+                        console.log('[PWA] Service Worker registered:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('[PWA] Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+
+</html>

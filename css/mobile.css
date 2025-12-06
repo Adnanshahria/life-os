@@ -1,0 +1,533 @@
+/* ============================================
+   LIFE-OS MOBILE COMPLETE REDESIGN
+   Apply to ALL pages for consistent mobile experience
+   ============================================ */
+
+/* Bottom Navigation Bar for Mobile */
+.bottom-nav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(11, 15, 20, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 0.5rem 0;
+    padding-bottom: calc(0.5rem + env(safe-area-inset-bottom));
+    z-index: 1000;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.bottom-nav-items {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.bottom-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    text-decoration: none;
+    color: #64748b;
+    font-size: 0.6rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+    min-width: 60px;
+}
+
+.bottom-nav-item i {
+    font-size: 1.2rem;
+    transition: transform 0.2s ease;
+}
+
+.bottom-nav-item.active {
+    color: #3b82f6;
+}
+
+.bottom-nav-item.active i {
+    transform: scale(1.15);
+}
+
+.bottom-nav-item:active {
+    transform: scale(0.92);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Mobile Styles - Complete Redesign */
+@media (max-width: 768px) {
+
+    /* Hide desktop sidebar completely on mobile */
+    .sidebar {
+        display: none !important;
+    }
+
+    /* Show bottom navigation */
+    .bottom-nav {
+        display: block;
+    }
+
+    /* Redesigned Mobile Header */
+    .mobile-header {
+        display: flex !important;
+        background: rgba(5, 6, 8, 0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        padding: 0.85rem 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        justify-content: center;
+    }
+
+    .mobile-header .brand-logo {
+        height: 28px;
+    }
+
+    .mobile-header .brand-text {
+        font-size: 0.95rem;
+    }
+
+    .menu-btn {
+        display: none !important;
+    }
+
+    /* Main Content Mobile Styles */
+    .main-content {
+        margin-left: 0 !important;
+        padding: 0.75rem 0.75rem 5rem 0.75rem !important;
+        max-width: 100% !important;
+        overflow-x: hidden;
+    }
+
+    /* Compact Hero for Mobile */
+    .hero {
+        padding: 1rem !important;
+        margin-bottom: 1.25rem !important;
+        border-radius: 12px !important;
+    }
+
+    .hero h1 {
+        font-size: 1.35rem !important;
+        line-height: 1.3 !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .hero p {
+        font-size: 0.8rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .hero-tag {
+        font-size: 0.65rem !important;
+        padding: 0.2rem 0.5rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .hero-badges {
+        gap: 0.4rem !important;
+    }
+
+    .badge {
+        font-size: 0.7rem !important;
+        padding: 0.3rem 0.6rem !important;
+    }
+
+    /* Typography Mobile */
+    h1 {
+        font-size: 1.35rem !important;
+    }
+
+    h2 {
+        font-size: 1.1rem !important;
+        margin: 1.25rem 0 0.75rem !important;
+        padding-bottom: 0.4rem !important;
+    }
+
+    h3 {
+        font-size: 0.95rem !important;
+        margin: 1rem 0 0.5rem !important;
+    }
+
+    p {
+        font-size: 0.85rem !important;
+        line-height: 1.6 !important;
+    }
+
+    /* Cards Mobile */
+    .card {
+        padding: 0.85rem !important;
+        margin-bottom: 0.85rem !important;
+        border-radius: 12px !important;
+    }
+
+    .card-accent,
+    .card-success,
+    .card-warning,
+    .card-error {
+        border-left-width: 2px !important;
+    }
+
+    /* Grids Mobile - Stack Everything */
+    .grid-2,
+    .grid-3,
+    .grid-4,
+    .cards-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0.65rem !important;
+    }
+
+    /* Book Cards Mobile - Horizontal List Style */
+    .book-card {
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.85rem !important;
+        padding: 0.85rem 1rem !important;
+        border-radius: 12px !important;
+    }
+
+    .book-card:hover {
+        transform: none !important;
+    }
+
+    .book-card:active {
+        transform: scale(0.98) !important;
+        background: #12161c !important;
+    }
+
+    .book-card i {
+        font-size: 1.3rem !important;
+        margin-bottom: 0 !important;
+        min-width: 36px !important;
+        height: 36px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: rgba(255, 255, 255, 0.05) !important;
+        border-radius: 8px !important;
+    }
+
+    .book-card h3 {
+        font-size: 0.9rem !important;
+        margin-bottom: 0.1rem !important;
+    }
+
+    .book-card p {
+        font-size: 0.75rem !important;
+        margin: 0 !important;
+    }
+
+    /* Framework Section Mobile */
+    .framework {
+        padding: 1rem !important;
+        margin-bottom: 1.5rem !important;
+        border-radius: 12px !important;
+    }
+
+    .framework h2 {
+        font-size: 1rem !important;
+        margin: 0 0 0.5rem 0 !important;
+    }
+
+    .pillars {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0.4rem !important;
+        margin-top: 0.75rem !important;
+    }
+
+    .pillar {
+        padding: 0.7rem 0.85rem !important;
+        border-radius: 8px !important;
+    }
+
+    .pillar-num {
+        width: 24px !important;
+        height: 24px !important;
+        font-size: 0.75rem !important;
+    }
+
+    .pillar-text {
+        font-size: 0.8rem !important;
+    }
+
+    .cta-btn {
+        display: flex !important;
+        justify-content: center !important;
+        width: 100% !important;
+        padding: 0.75rem 1.25rem !important;
+        margin-top: 1rem !important;
+        border-radius: 10px !important;
+        font-size: 0.9rem !important;
+    }
+
+    /* Lists Mobile */
+    ul,
+    ol {
+        margin-left: 1rem !important;
+        margin-bottom: 0.75rem !important;
+    }
+
+    li {
+        font-size: 0.85rem !important;
+        margin-bottom: 0.35rem !important;
+    }
+
+    /* Blockquotes Mobile */
+    blockquote {
+        padding: 0.75rem 0.85rem !important;
+        font-size: 0.85rem !important;
+        margin: 1rem 0 !important;
+    }
+
+    /* Accordions Mobile */
+    .accordion-header {
+        padding: 0.75rem 1rem !important;
+    }
+
+    .accordion-title {
+        font-size: 0.9rem !important;
+    }
+
+    .accordion-subtitle {
+        font-size: 0.75rem !important;
+    }
+
+    .accordion-content {
+        padding: 0 1rem 1rem !important;
+    }
+
+    /* Habit Loop Steps Mobile */
+    .habit-loop-step {
+        padding: 0.75rem !important;
+    }
+
+    .step-num {
+        font-size: 0.6rem !important;
+    }
+
+    .step-title {
+        font-size: 0.9rem !important;
+    }
+
+    .step-brain {
+        font-size: 0.6rem !important;
+    }
+
+    /* Code Blocks Mobile */
+    .code-block {
+        padding: 0.75rem !important;
+        font-size: 0.75rem !important;
+    }
+
+    code {
+        font-size: 0.75rem !important;
+        padding: 0.15rem 0.35rem !important;
+    }
+
+    /* Virtue Cards Mobile */
+    .virtue-card {
+        padding: 0.85rem !important;
+        border-radius: 10px !important;
+    }
+
+    .virtue-icon {
+        font-size: 1.5rem !important;
+    }
+
+    .virtue-title {
+        font-size: 0.9rem !important;
+    }
+
+    .virtue-desc {
+        font-size: 0.75rem !important;
+    }
+
+    /* Ritual Cards Mobile */
+    .morning-evening {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0.75rem !important;
+    }
+
+    .ritual-card {
+        padding: 0.85rem !important;
+        border-radius: 10px !important;
+    }
+
+    /* Tabs Mobile */
+    .tabs-container {
+        border-radius: 12px !important;
+    }
+
+    .tab-header {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+
+    .tab-btn {
+        padding: 0.6rem 0.4rem !important;
+        font-size: 0.75rem !important;
+        white-space: nowrap !important;
+    }
+
+    .tab-content {
+        padding: 0.85rem !important;
+    }
+
+    /* Flashcards Mobile */
+    .flashcard {
+        padding: 0.85rem !important;
+        min-height: 80px !important;
+        border-radius: 10px !important;
+    }
+
+    .flashcard h4 {
+        font-size: 0.85rem !important;
+    }
+
+    .flashcard p {
+        font-size: 0.75rem !important;
+    }
+
+    /* Flip Cards Mobile */
+    .flip-card {
+        height: 160px !important;
+    }
+
+    .flip-icon {
+        font-size: 1.75rem !important;
+    }
+
+    .flip-front,
+    .flip-back {
+        padding: 0.75rem !important;
+        font-size: 0.85rem !important;
+    }
+
+    /* Sliders Mobile */
+    .slider-container {
+        margin: 0.85rem 0 !important;
+    }
+
+    .slider-label {
+        font-size: 0.75rem !important;
+    }
+
+    /* Chart Mobile */
+    .chart-container {
+        padding: 0.85rem !important;
+        border-radius: 12px !important;
+    }
+
+    .chart-container canvas {
+        max-height: 220px !important;
+    }
+
+    /* Part Divider Mobile */
+    .part-divider {
+        padding: 1rem !important;
+        margin: 2rem 0 1.25rem !important;
+        border-radius: 12px !important;
+    }
+
+    .part-divider h2 {
+        font-size: 1.15rem !important;
+    }
+
+    /* Signal Cards Mobile */
+    .signal-card {
+        padding: 1rem !important;
+    }
+
+    .signal-title {
+        font-size: 0.9rem !important;
+    }
+
+    /* Verdict Mobile */
+    .verdict {
+        padding: 1.25rem !important;
+        margin-top: 2rem !important;
+        border-radius: 12px !important;
+    }
+
+    .verdict h2 {
+        font-size: 1.1rem !important;
+    }
+
+    .verdict li {
+        font-size: 0.85rem !important;
+    }
+
+    /* Checklist Mobile */
+    .checklist-item {
+        padding: 0.5rem !important;
+    }
+
+    .checklist-item input {
+        width: 16px !important;
+        height: 16px !important;
+    }
+
+    /* Footer Mobile */
+    footer {
+        padding: 1.5rem 0.75rem !important;
+        margin-top: 1.5rem !important;
+        font-size: 0.75rem !important;
+    }
+}
+
+/* Extra small devices (phones, less than 375px) */
+@media (max-width: 374px) {
+    .mobile-header {
+        padding: 0.7rem 0.85rem !important;
+    }
+
+    .mobile-header .brand-logo {
+        height: 24px !important;
+    }
+
+    .mobile-header .brand-text {
+        font-size: 0.85rem !important;
+    }
+
+    .hero h1 {
+        font-size: 1.2rem !important;
+    }
+
+    .hero p {
+        font-size: 0.75rem !important;
+    }
+
+    h2 {
+        font-size: 1rem !important;
+    }
+
+    .bottom-nav-item {
+        font-size: 0.55rem !important;
+        min-width: 45px !important;
+        padding: 0.4rem 0.5rem !important;
+    }
+
+    .bottom-nav-item i {
+        font-size: 1rem !important;
+    }
+
+    .main-content {
+        padding: 0.5rem 0.5rem 4.5rem 0.5rem !important;
+    }
+
+    .card {
+        padding: 0.7rem !important;
+    }
+
+    .book-card {
+        padding: 0.7rem 0.85rem !important;
+    }
+}
